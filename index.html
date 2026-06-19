@@ -3,312 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HopeConnect NGO Management System</title>
+  <title>HopeConnect - Empowering Communities, Changing Lives</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* SVG icon sizing overrides */
-    .card-icon svg { display: block; }
-    .vol-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; }
-    .vol-icon svg { display: block; }
-    .brand-icon { display: flex; align-items: center; }
-    .brand-icon svg { display: block; }
-
-    /* Perk list checkmarks */
-    .perk-check {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      background: #c6f6d5;
-      color: #276749;
-      border-radius: 50%;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-right: 0.5rem;
-      flex-shrink: 0;
-    }
-    .donation-perks li {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Hero SVG illustration */
-    .hero-svg-illustration { z-index: 1; }
-
-    /* Hero visual without floating card — centre the illustration better */
-    .hero-visual {
-      width: 280px;
-      height: 280px;
-    }
-
-    /* Campaign img — ensure SVG icons centre properly */
-    .campaign-img svg { flex-shrink: 0; }
-
-    /* Vol card inner layout */
-    .vol-card { align-items: flex-start; }
-    .vol-card > div:last-child { flex: 1; }
-
-    /* Trend arrows — keep text-based */
-    .card-trend.up::before { content: "▲ "; }
-  </style>
 </head>
 <body>
 
-  <!-- ===== HEADER / NAVBAR ===== -->
-  <header class="navbar">
-    <div class="nav-brand">
-      <span class="brand-icon">
-        <!-- Leaf / Sprout SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 22V12"/>
-          <path d="M12 12C12 7 16 3 21 3C21 8 17 12 12 12Z"/>
-          <path d="M12 12C12 7 8 3 3 3C3 8 7 12 12 12Z"/>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" fill="#0d7377"/>
+          <path d="M14 6c-4.418 0-8 3.582-8 8 0 2.21.895 4.21 2.343 5.657L14 22l5.657-2.343A7.963 7.963 0 0022 14c0-4.418-3.582-8-8-8z" fill="#43b89c"/>
+          <circle cx="14" cy="14" r="3" fill="#fff"/>
         </svg>
-      </span>
-      <span class="brand-name">HopeConnect</span>
+        HopeConnect
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#campaigns">Campaigns</a></li>
+        <li><a href="#volunteers">Volunteers</a></li>
+        <li><a href="#donate">Donors</a></li>
+        <li><a href="#reports">Reports</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="btn btn-outline">Login</a>
+        <a href="#donate" class="btn btn-primary">Donate Now</a>
+      </div>
     </div>
-    <nav class="nav-links">
-      <a href="#dashboard">Dashboard</a>
-      <a href="#campaigns">Campaigns</a>
-      <a href="#volunteers">Volunteers</a>
-      <a href="#donors">Donors</a>
-      <a href="#reports">Reports</a>
-      <a href="#events">Events</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="btn btn-outline">Login</button>
-      <button class="btn btn-primary">Donate Now</button>
-    </div>
-    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
-  </header>
+  </nav>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="hero-badge">Making a Difference Since 2010</span>
-      <h1>Empowering Communities,<br /><span class="highlight">Changing Lives</span></h1>
-      <p>HopeConnect coordinates volunteers, donors, and resources to deliver transparent, impactful programs across India. Join us in building a better tomorrow.</p>
-      <div class="hero-buttons">
-        <button class="btn btn-primary btn-lg">Start Donating</button>
-        <button class="btn btn-outline btn-lg">Become a Volunteer</button>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <span class="hero-badge">Registered NGO | 80G | FCRA Certified</span>
+        <h1>Empowering Communities,<br/>Changing Lives</h1>
+        <p class="hero-sub">HopeConnect works at the grassroots level to deliver clean water, education, healthcare, and livelihood support to underserved communities across India. Every rupee donated creates real, measurable impact.</p>
+        <div class="hero-cta">
+          <a href="#donate" class="btn btn-primary btn-lg">Start Donating</a>
+          <a href="#volunteers" class="btn btn-outline-white btn-lg">Become a Volunteer</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">12,450</span>
+            <span class="stat-label">Beneficiaries</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Rs.48L+</span>
+            <span class="stat-label">Funds Raised</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">860</span>
+            <span class="stat-label">Volunteers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">34</span>
+            <span class="stat-label">Campaigns</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">12,450</span>
-          <span class="stat-label">Beneficiaries Served</span>
+      <div class="hero-right">
+        <div class="hero-deco-bg">
+          <div class="deco-circle deco-circle-1"></div>
+          <div class="deco-circle deco-circle-2"></div>
+          <div class="deco-circle deco-circle-3"></div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">₹48L+</span>
-          <span class="stat-label">Funds Raised</span>
+        <div class="donation-live-card">
+          <div class="live-indicator">
+            <span class="live-dot"></span> Live Activity
+          </div>
+          <div class="live-donation">
+            <div class="donor-avatar">R</div>
+            <div class="donor-info">
+              <strong>Rahul M.</strong> donated
+              <span class="donation-amount">Rs.5,000</span>
+              <div class="donation-campaign">to Clean Water Drive</div>
+            </div>
+          </div>
+          <div class="live-donation">
+            <div class="donor-avatar" style="background:#7b1fa2">P</div>
+            <div class="donor-info">
+              <strong>Priya S.</strong> donated
+              <span class="donation-amount">Rs.2,000</span>
+              <div class="donation-campaign">to Books Drive 2026</div>
+            </div>
+          </div>
+          <div class="card-progress-wrap">
+            <div class="card-progress-label">
+              <span>Clean Water Drive</span><span>64%</span>
+            </div>
+            <div class="card-progress-bar">
+              <div class="card-progress-fill" style="width:64%"></div>
+            </div>
+          </div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">860</span>
-          <span class="stat-label">Active Volunteers</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">34</span>
-          <span class="stat-label">Campaigns Run</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <div class="hero-visual">
-        <div class="visual-circle c1"></div>
-        <div class="visual-circle c2"></div>
-        <div class="visual-circle c3"></div>
-        <!-- Decorative SVG illustration replacing the handshake emoji -->
-        <svg class="hero-svg-illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
-          <!-- Two hands reaching toward a heart — abstract community icon -->
-          <circle cx="60" cy="60" r="54" fill="rgba(13,115,119,0.08)" stroke="rgba(13,115,119,0.18)" stroke-width="2"/>
-          <!-- Heart -->
-          <path d="M60 82 C60 82 34 65 34 49 C34 40 41 34 49 36 C53 37 57 40 60 44 C63 40 67 37 71 36 C79 34 86 40 86 49 C86 65 60 82 60 82Z" fill="rgba(13,115,119,0.55)" stroke="#0d7377" stroke-width="1.5"/>
-          <!-- Left arm/hand -->
-          <path d="M20 78 Q30 68 42 72" stroke="#43b89c" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <circle cx="42" cy="72" r="4" fill="#43b89c"/>
-          <!-- Right arm/hand -->
-          <path d="M100 78 Q90 68 78 72" stroke="#43b89c" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <circle cx="78" cy="72" r="4" fill="#43b89c"/>
-          <!-- People silhouettes -->
-          <circle cx="20" cy="70" r="7" fill="#0d7377" opacity="0.7"/>
-          <path d="M14 85 Q20 78 26 85" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7"/>
-          <circle cx="100" cy="70" r="7" fill="#0d7377" opacity="0.7"/>
-          <path d="M94 85 Q100 78 106 85" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7"/>
-        </svg>
       </div>
     </div>
   </section>
 
-  <!-- ===== IMPACT OVERVIEW CARDS ===== -->
-  <section class="section" id="dashboard">
+  <!-- IMPACT DASHBOARD -->
+  <section class="impact-dashboard section-pad" id="impact">
     <div class="container">
       <div class="section-header">
-        <h2>Live Impact Dashboard</h2>
-        <p>Real-time overview of our ongoing work and fund utilisation</p>
+        <span class="section-label">Our Impact</span>
+        <h2>Impact Dashboard</h2>
+        <p>Real-time overview of HopeConnect's work across all programs and regions.</p>
       </div>
-      <div class="cards-grid">
-        <div class="impact-card green">
-          <div class="card-icon">
-            <!-- Currency / Wallet SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#43b89c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <div class="impact-grid">
+
+        <div class="impact-card border-green">
+          <div class="impact-card-icon icon-green">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="7" width="20" height="14" rx="2"/>
-              <path d="M16 14a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/>
-              <path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="16"/>
+              <line x1="10" y1="14" x2="14" y2="14"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Total Funds Raised</h3>
-            <div class="big-number">₹48,32,000</div>
-            <div class="card-trend up">▲ 12% this month</div>
+          <div class="impact-card-body">
+            <div class="impact-value">Rs.48,32,000</div>
+            <div class="impact-title">Total Funds Raised</div>
+            <div class="impact-change positive">+12% this month</div>
           </div>
         </div>
-        <div class="impact-card blue">
-          <div class="card-icon">
-            <!-- Group / People SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#3182ce" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="9" cy="7" r="3"/>
-              <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-              <circle cx="17" cy="7" r="3" opacity="0.6"/>
-              <path d="M21 21v-2a4 4 0 0 0-3-3.87" opacity="0.6"/>
+
+        <div class="impact-card border-blue">
+          <div class="impact-card-icon icon-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Volunteers Registered</h3>
-            <div class="big-number">860</div>
-            <div class="card-trend up">▲ 45 joined this month</div>
+          <div class="impact-card-body">
+            <div class="impact-value">860</div>
+            <div class="impact-title">Volunteers Registered</div>
+            <div class="impact-change positive">45 joined this month</div>
           </div>
         </div>
-        <div class="impact-card orange">
-          <div class="card-icon">
-            <!-- Target / Flag SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#f9a825" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+        <div class="impact-card border-orange">
+          <div class="impact-card-icon icon-orange">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Active Campaigns</h3>
-            <div class="big-number">7</div>
-            <div class="card-trend">3 near goal</div>
+          <div class="impact-card-body">
+            <div class="impact-value">7</div>
+            <div class="impact-title">Active Campaigns</div>
+            <div class="impact-change warning">3 near goal</div>
           </div>
         </div>
-        <div class="impact-card purple">
-          <div class="card-icon">
-            <!-- Beneficiary / Person-heart SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#7b1fa2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="7" r="4"/>
-              <path d="M6 21v-2a6 6 0 0 1 12 0v2"/>
-              <path d="M12 14.5 c-.5-1-2-1-2 .5s1.5 2.5 2 3c.5-.5 2-1.5 2-3s-1.5-1.5-2-.5Z" fill="#7b1fa2" stroke="none"/>
+
+        <div class="impact-card border-purple">
+          <div class="impact-card-icon icon-purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
-          <div class="card-body">
-            <h3>Beneficiaries Served</h3>
-            <div class="big-number">12,450</div>
-            <div class="card-trend up">▲ 340 this quarter</div>
+          <div class="impact-card-body">
+            <div class="impact-value">12,450</div>
+            <div class="impact-title">Beneficiaries Served</div>
+            <div class="impact-change positive">340 this quarter</div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== ACTIVE CAMPAIGNS ===== -->
-  <section class="section section-alt" id="campaigns">
+  <!-- ACTIVE CAMPAIGNS -->
+  <section class="campaigns section-pad" id="campaigns">
     <div class="container">
       <div class="section-header">
-        <h2>Active Fundraising Campaigns</h2>
-        <p>Support a cause that matters to you — every rupee counts</p>
+        <span class="section-label">Make a Difference</span>
+        <h2>Active Campaigns</h2>
+        <p>Support our ongoing initiatives and help us reach our goals for communities in need.</p>
       </div>
       <div class="campaigns-grid">
 
         <div class="campaign-card">
-          <div class="campaign-img" style="background: linear-gradient(135deg,#43b89c,#0d7377);">
-            <!-- Water Droplet SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 2 C12 2 5 10 5 15 a7 7 0 0 0 14 0 C19 10 12 2 12 2Z" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.85)"/>
-            </svg>
-          </div>
-          <div class="campaign-body">
-            <span class="campaign-tag">Water &amp; Sanitation</span>
+          <div class="campaign-header header-teal">
+            <span class="campaign-category">Water &amp; Sanitation</span>
             <h3>Clean Water for Rural Villages</h3>
-            <p>Providing clean drinking water to 500 families in drought-prone Vidarbha.</p>
-            <div class="progress-wrap">
-              <div class="progress-info">
-                <span>₹3,20,000 raised</span>
-                <span>Goal: ₹5,00,000</span>
+          </div>
+          <div class="campaign-body">
+            <p>Providing safe drinking water through bore wells, filtration units, and piped supply to 15 villages in Vidarbha and Marathwada regions.</p>
+            <div class="campaign-progress-wrap">
+              <div class="campaign-progress-info">
+                <span>Rs.3,20,000 raised</span>
+                <span class="progress-pct">64%</span>
               </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width:64%;">64%</div>
+              <div class="progress-track">
+                <div class="progress-fill fill-teal" style="width:64%"></div>
               </div>
+              <div class="campaign-goal">Goal: Rs.5,00,000</div>
             </div>
             <div class="campaign-meta">
-              <span>Ends: 31 Jul 2026</span>
-              <span>124 donors</span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                142 donors
+              </span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Ends Aug 31, 2026
+              </span>
             </div>
-            <button class="btn btn-primary full-width">Donate to This Campaign</button>
+            <a href="#donate" class="btn btn-primary btn-block">Donate to This Campaign</a>
           </div>
         </div>
 
         <div class="campaign-card">
-          <div class="campaign-img" style="background: linear-gradient(135deg,#f9a825,#e65100);">
-            <!-- Book SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h7a4 4 0 0 1 4 4v13H4V4Z" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.85)"/>
-              <path d="M15 8h4v13h-7a4 4 0 0 1-4-4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.85)"/>
-              <line x1="8" y1="9" x2="11" y2="9" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
-              <line x1="8" y1="12" x2="11" y2="12" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
-            </svg>
+          <div class="campaign-header header-orange-grad">
+            <span class="campaign-category">Education</span>
+            <h3>Books and Stationery Drive 2026</h3>
           </div>
           <div class="campaign-body">
-            <span class="campaign-tag">Education</span>
-            <h3>Books &amp; Stationery Drive 2026</h3>
-            <p>Distributing school kits to 1,000 underprivileged children before the new academic year.</p>
-            <div class="progress-wrap">
-              <div class="progress-info">
-                <span>₹1,85,000 raised</span>
-                <span>Goal: ₹2,00,000</span>
+            <p>Distributing notebooks, textbooks, and stationery kits to 2,000 underprivileged children in government schools across Pune and Nashik districts.</p>
+            <div class="campaign-progress-wrap">
+              <div class="campaign-progress-info">
+                <span>Rs.1,85,000 raised</span>
+                <span class="progress-pct pct-green">92%</span>
               </div>
-              <div class="progress-bar">
-                <div class="progress-fill goal-near" style="width:92%;">92%</div>
+              <div class="progress-track">
+                <div class="progress-fill fill-green" style="width:92%"></div>
               </div>
+              <div class="campaign-goal">Goal: Rs.2,00,000</div>
             </div>
             <div class="campaign-meta">
-              <span>Ends: 15 Jul 2026</span>
-              <span>89 donors</span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                318 donors
+              </span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Ends Jul 15, 2026
+              </span>
             </div>
-            <button class="btn btn-primary full-width">Donate to This Campaign</button>
+            <a href="#donate" class="btn btn-primary btn-block">Donate to This Campaign</a>
           </div>
         </div>
 
         <div class="campaign-card">
-          <div class="campaign-img" style="background: linear-gradient(135deg,#7b1fa2,#4a148c);">
-            <!-- Medical Cross SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="9" y="3" width="6" height="18" rx="1" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.85)"/>
-              <rect x="3" y="9" width="18" height="6" rx="1" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.85)"/>
-            </svg>
+          <div class="campaign-header header-purple-grad">
+            <span class="campaign-category">Healthcare</span>
+            <h3>Free Medical Camp - Tribal Areas</h3>
           </div>
           <div class="campaign-body">
-            <span class="campaign-tag">Healthcare</span>
-            <h3>Free Medical Camp – Tribal Areas</h3>
-            <p>Organising free health checkups and medicine distribution in Nandurbar tribal belt.</p>
-            <div class="progress-wrap">
-              <div class="progress-info">
-                <span>₹95,000 raised</span>
-                <span>Goal: ₹3,00,000</span>
+            <p>Conducting free medical camps with doctors, diagnostics, and medicines for tribal communities in Palghar, Nandurbar, and Gadchiroli.</p>
+            <div class="campaign-progress-wrap">
+              <div class="campaign-progress-info">
+                <span>Rs.95,000 raised</span>
+                <span class="progress-pct pct-orange">32%</span>
               </div>
-              <div class="progress-bar">
-                <div class="progress-fill low" style="width:32%;">32%</div>
+              <div class="progress-track">
+                <div class="progress-fill fill-orange" style="width:32%"></div>
               </div>
+              <div class="campaign-goal">Goal: Rs.3,00,000</div>
             </div>
             <div class="campaign-meta">
-              <span>Ends: 30 Sep 2026</span>
-              <span>41 donors</span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                67 donors
+              </span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Ends Sep 30, 2026
+              </span>
             </div>
-            <button class="btn btn-primary full-width">Donate to This Campaign</button>
+            <a href="#donate" class="btn btn-primary btn-block">Donate to This Campaign</a>
           </div>
         </div>
 
@@ -316,451 +291,594 @@
     </div>
   </section>
 
-  <!-- ===== DONATION FORM ===== -->
-  <section class="section" id="donors">
+  <!-- DONATION FORM -->
+  <section class="donation-section section-pad" id="donate">
     <div class="container">
+      <div class="section-header">
+        <span class="section-label">Give Today</span>
+        <h2>Make a Donation</h2>
+        <p>Your contribution is 100% tax-deductible under Section 80G of the Income Tax Act.</p>
+      </div>
       <div class="donation-layout">
+
         <div class="donation-info">
-          <h2>Make a Donation</h2>
-          <p>Your contribution is fully transparent — track exactly how every rupee is spent through our public reports.</p>
-          <ul class="donation-perks">
-            <li><span class="perk-check">&#10003;</span> 80G Tax Exemption Certificate auto-generated</li>
-            <li><span class="perk-check">&#10003;</span> Real-time campaign progress updates</li>
-            <li><span class="perk-check">&#10003;</span> Monthly transparency reports</li>
-            <li><span class="perk-check">&#10003;</span> One-time or recurring donation options</li>
-            <li><span class="perk-check">&#10003;</span> Secure payment via Razorpay / Stripe / PayPal</li>
+          <h3>Why Donate to HopeConnect?</h3>
+          <ul class="donation-benefits">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Instant tax receipt under Section 80G sent to your email
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              100% transparency - every rupee is tracked and reported
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              PCI-DSS compliant, bank-grade secure payment gateway
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              FCRA registered - foreign contributions accepted legally
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Quarterly impact reports sent to all donors
+            </li>
           </ul>
-          <div class="donor-wall">
+
+          <div class="recent-donors">
             <h4>Recent Donors</h4>
-            <div class="donor-list">
-              <div class="donor-pill">Priya S. – ₹2,000</div>
-              <div class="donor-pill">Amit K. – ₹5,000</div>
-              <div class="donor-pill">Sunita R. – ₹1,500</div>
-              <div class="donor-pill">Raj Corp – ₹25,000</div>
-              <div class="donor-pill">Meena T. – ₹500</div>
+            <div class="donor-row">
+              <div class="donor-avatar-sm" style="background:#0d7377">P</div>
+              <div class="donor-row-info"><span>Priya S.</span><small>Books Drive</small></div>
+              <strong>Rs.2,000</strong>
+            </div>
+            <div class="donor-row">
+              <div class="donor-avatar-sm" style="background:#1565c0">A</div>
+              <div class="donor-row-info"><span>Amit K.</span><small>Clean Water</small></div>
+              <strong>Rs.5,000</strong>
+            </div>
+            <div class="donor-row">
+              <div class="donor-avatar-sm" style="background:#43b89c">S</div>
+              <div class="donor-row-info"><span>Sunita R.</span><small>Medical Camp</small></div>
+              <strong>Rs.1,500</strong>
+            </div>
+            <div class="donor-row">
+              <div class="donor-avatar-sm" style="background:#f9a825">R</div>
+              <div class="donor-row-info"><span>Raj Corp</span><small>General Fund</small></div>
+              <strong>Rs.25,000</strong>
+            </div>
+            <div class="donor-row">
+              <div class="donor-avatar-sm" style="background:#7b1fa2">M</div>
+              <div class="donor-row-info"><span>Meena T.</span><small>Books Drive</small></div>
+              <strong>Rs.500</strong>
             </div>
           </div>
         </div>
+
         <div class="donation-form-card">
-          <h3>Quick Donation</h3>
+          <h3>Choose Your Contribution</h3>
           <div class="amount-chips">
-            <button class="chip active">₹500</button>
-            <button class="chip">₹1,000</button>
-            <button class="chip">₹2,000</button>
-            <button class="chip">₹5,000</button>
-            <button class="chip">Custom</button>
+            <button class="chip" data-amount="500">Rs.500</button>
+            <button class="chip active" data-amount="1000">Rs.1,000</button>
+            <button class="chip" data-amount="2000">Rs.2,000</button>
+            <button class="chip" data-amount="5000">Rs.5,000</button>
+            <button class="chip chip-custom" data-amount="custom">Custom</button>
           </div>
-          <form class="donation-form">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" placeholder="Enter your full name" />
+          <input type="number" class="custom-amount-input" id="customAmount" placeholder="Enter custom amount (Rs.)" style="display:none;" />
+
+          <form class="donation-form" id="donationForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="donorName">Full Name <span class="req">*</span></label>
+                <input type="text" id="donorName" placeholder="Your full name" required />
+              </div>
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="donorEmail">Email Address <span class="req">*</span></label>
+                <input type="email" id="donorEmail" placeholder="you@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="donorPhone">Phone Number</label>
+                <input type="tel" id="donorPhone" placeholder="+91 9XXXXXXXXX" />
+              </div>
             </div>
             <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" placeholder="your@email.com" />
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="+91 XXXXX XXXXX" />
-            </div>
-            <div class="form-group">
-              <label>Select Campaign</label>
-              <select>
-                <option>Clean Water for Rural Villages</option>
-                <option>Books &amp; Stationery Drive 2026</option>
-                <option>Free Medical Camp – Tribal Areas</option>
-                <option>General Fund</option>
+              <label for="donorCampaign">Select Campaign</label>
+              <select id="donorCampaign">
+                <option value="">General Fund (Where Most Needed)</option>
+                <option value="water">Clean Water for Rural Villages</option>
+                <option value="books">Books and Stationery Drive 2026</option>
+                <option value="medical">Free Medical Camp - Tribal Areas</option>
               </select>
             </div>
             <div class="form-group">
               <label>Donation Type</label>
               <div class="radio-group">
                 <label class="radio-label">
-                  <input type="radio" name="dtype" checked /> One-time
+                  <input type="radio" name="donationType" value="onetime" checked /> One-time
                 </label>
                 <label class="radio-label">
-                  <input type="radio" name="dtype" /> Monthly
+                  <input type="radio" name="donationType" value="monthly" /> Monthly
                 </label>
                 <label class="radio-label">
-                  <input type="radio" name="dtype" /> Annual
+                  <input type="radio" name="donationType" value="annual" /> Annual
                 </label>
               </div>
             </div>
-            <div class="form-group checkbox-group">
-              <label>
-                <input type="checkbox" checked /> Add my name to the donor wall
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="donorWall" checked />
+                Display my name on our Donor Honour Wall
               </label>
-              <label>
-                <input type="checkbox" checked /> I agree to the privacy policy
+              <label class="checkbox-label">
+                <input type="checkbox" id="privacyConsent" required />
+                I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>
               </label>
             </div>
-            <button type="submit" class="btn btn-primary full-width btn-lg">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               Proceed to Secure Payment
             </button>
-            <p class="form-note">PCI-DSS compliant · 80G receipt auto-emailed · No card data stored</p>
+            <p class="pci-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Secured by PCI-DSS Level 1 compliant payment gateway. We accept UPI, Net Banking, Credit/Debit Cards.
+            </p>
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== VOLUNTEER SECTION ===== -->
-  <section class="section section-alt" id="volunteers">
+  <!-- VOLUNTEER SECTION -->
+  <section class="volunteer-section section-pad" id="volunteers">
     <div class="container">
       <div class="section-header">
-        <h2>Volunteer with Us</h2>
-        <p>Join 860+ volunteers making a real difference on the ground</p>
+        <span class="section-label">Join Our Team</span>
+        <h2>Become a Volunteer</h2>
+        <p>Contribute your time and skills to make a tangible difference in people's lives.</p>
       </div>
       <div class="volunteer-layout">
-        <div class="volunteer-cards">
-          <div class="vol-card">
+
+        <div class="volunteer-features">
+          <div class="vol-feature-card">
             <div class="vol-icon">
-              <!-- Clipboard SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#43b89c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="9" y="2" width="6" height="3" rx="1"/>
-                <rect x="4" y="4" width="16" height="18" rx="2"/>
-                <line x1="8" y1="11" x2="16" y2="11"/>
-                <line x1="8" y1="15" x2="13" y2="15"/>
-              </svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
             <div>
-              <h4>Register &amp; Get Matched</h4>
-              <p>Share your skills and availability. We match you to tasks that fit you best.</p>
+              <h4>Register and Get Matched</h4>
+              <p>Submit your profile and our system matches you with campaigns that align with your skills and availability.</p>
             </div>
           </div>
-          <div class="vol-card">
+          <div class="vol-feature-card">
             <div class="vol-icon">
-              <!-- Mobile / QR SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#43b89c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="7" y="2" width="10" height="20" rx="2"/>
-                <circle cx="12" cy="17" r="1" fill="#43b89c"/>
-              </svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
             </div>
             <div>
-              <h4>QR &amp; GPS Check-in</h4>
-              <p>Scan the event QR code or use GPS to mark attendance — no paper registers.</p>
+              <h4>QR and GPS Check-in</h4>
+              <p>Use our mobile app to scan QR codes or check in via GPS at event venues for accurate attendance tracking.</p>
             </div>
           </div>
-          <div class="vol-card">
+          <div class="vol-feature-card">
             <div class="vol-icon">
-              <!-- Clock SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#43b89c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="9"/>
-                <polyline points="12 7 12 12 15 15"/>
-              </svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
               <h4>Auto Hour Tracking</h4>
-              <p>Hours are logged automatically and approved by the admin for your records.</p>
+              <p>Hours are automatically recorded upon check-in and check-out. View your complete volunteering history anytime.</p>
             </div>
           </div>
-          <div class="vol-card">
+          <div class="vol-feature-card">
             <div class="vol-icon">
-              <!-- Award / Medal SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#43b89c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="14" r="7"/>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                <circle cx="12" cy="14" r="3.5" fill="rgba(67,184,156,0.2)"/>
-              </svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d7377" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </div>
             <div>
               <h4>Download Certificate</h4>
-              <p>Get a signed participation certificate with your total service hours as PDF.</p>
+              <p>Automatically generate and download digitally signed volunteer experience certificates after completing 8 hours.</p>
             </div>
           </div>
         </div>
+
         <div class="volunteer-form-card">
           <h3>Volunteer Registration</h3>
-          <form class="donation-form">
-            <div class="form-row">
+          <form id="volunteerForm" novalidate>
+            <div class="form-row two-col">
               <div class="form-group">
-                <label>First Name *</label>
-                <input type="text" placeholder="First name" />
+                <label for="volFirstName">First Name <span class="req">*</span></label>
+                <input type="text" id="volFirstName" placeholder="First name" required />
               </div>
               <div class="form-group">
-                <label>Last Name *</label>
-                <input type="text" placeholder="Last name" />
+                <label for="volLastName">Last Name <span class="req">*</span></label>
+                <input type="text" id="volLastName" placeholder="Last name" required />
+              </div>
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="volEmail">Email <span class="req">*</span></label>
+                <input type="email" id="volEmail" placeholder="you@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="volPhone">Phone <span class="req">*</span></label>
+                <input type="tel" id="volPhone" placeholder="+91 9XXXXXXXXX" required />
               </div>
             </div>
             <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" placeholder="your@email.com" />
+              <label for="volCity">City <span class="req">*</span></label>
+              <input type="text" id="volCity" placeholder="Your city" required />
             </div>
             <div class="form-group">
-              <label>Phone Number *</label>
-              <input type="tel" placeholder="+91 XXXXX XXXXX" />
-            </div>
-            <div class="form-group">
-              <label>Location / City *</label>
-              <input type="text" placeholder="City, State" />
-            </div>
-            <div class="form-group">
-              <label>Skills (select all that apply)</label>
-              <div class="checkbox-grid">
-                <label><input type="checkbox" /> Teaching</label>
-                <label><input type="checkbox" /> Medical</label>
-                <label><input type="checkbox" /> IT / Tech</label>
-                <label><input type="checkbox" /> Logistics</label>
-                <label><input type="checkbox" /> Fundraising</label>
-                <label><input type="checkbox" /> Photography</label>
+              <label>Skills (Select all that apply)</label>
+              <div class="skills-grid">
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="teaching" /> Teaching / Tutoring</label>
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="medical" /> Medical / Health</label>
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="it" /> IT / Tech</label>
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="logistics" /> Logistics</label>
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="fundraising" /> Fundraising</label>
+                <label class="checkbox-label"><input type="checkbox" name="skill" value="photography" /> Photography</label>
               </div>
             </div>
             <div class="form-group">
-              <label>Availability</label>
-              <select>
-                <option>Weekends only</option>
-                <option>Weekdays only</option>
-                <option>Full-time</option>
-                <option>As needed</option>
+              <label for="volAvailability">Availability</label>
+              <select id="volAvailability">
+                <option value="">Select availability</option>
+                <option value="weekends">Weekends Only</option>
+                <option value="weekdays">Weekdays Only</option>
+                <option value="flexible">Flexible / Both</option>
+                <option value="fulltime">Full-time (1 month+)</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary full-width btn-lg">Join as Volunteer</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit Registration</button>
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== TRANSPARENCY / REPORTS ===== -->
-  <section class="section" id="reports">
+  <!-- TRANSPARENCY REPORTS -->
+  <section class="reports-section section-pad" id="reports">
     <div class="container">
       <div class="section-header">
+        <span class="section-label">Full Accountability</span>
         <h2>Transparency Reports</h2>
-        <p>We believe in complete financial openness. See exactly how every rupee is utilised.</p>
+        <p>We publish detailed financial and impact reports so you always know how your donation is being used.</p>
       </div>
       <div class="reports-grid">
+
         <div class="report-card">
-          <div class="report-header">
-            <h4>Fund Utilisation – Q1 2026</h4>
-            <span class="report-badge published">Published</span>
+          <div class="report-card-header">
+            <div>
+              <span class="report-badge">Q1 2026</span>
+              <h4>Quarterly Fund Utilisation</h4>
+              <p class="report-period">January - March 2026</p>
+            </div>
+            <a href="#" class="btn btn-outline-sm">Download PDF</a>
           </div>
-          <div class="fund-bars">
-            <div class="fund-row">
-              <span>Education Programs</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:38%;background:#43b89c;">38%</div>
-              </div>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span class="bar-label">Education</span>
+              <div class="bar-track"><div class="bar-fill" style="width:38%;background:#0d7377"></div></div>
+              <span class="bar-pct">38%</span>
             </div>
-            <div class="fund-row">
-              <span>Healthcare Camps</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:27%;background:#0d7377;">27%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Healthcare</span>
+              <div class="bar-track"><div class="bar-fill" style="width:27%;background:#1565c0"></div></div>
+              <span class="bar-pct">27%</span>
             </div>
-            <div class="fund-row">
-              <span>Water &amp; Sanitation</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:21%;background:#f9a825;">21%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Water</span>
+              <div class="bar-track"><div class="bar-fill" style="width:21%;background:#43b89c"></div></div>
+              <span class="bar-pct">21%</span>
             </div>
-            <div class="fund-row">
-              <span>Admin &amp; Operations</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:14%;background:#7b1fa2;">14%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Admin</span>
+              <div class="bar-track"><div class="bar-fill" style="width:14%;background:#bdbdbd"></div></div>
+              <span class="bar-pct">14%</span>
             </div>
           </div>
-          <div class="report-summary">
-            <span>Total Received: <strong>₹14,20,000</strong></span>
-            <span>Beneficiaries: <strong>3,840</strong></span>
-          </div>
-          <button class="btn btn-outline full-width">Download PDF Report</button>
         </div>
 
         <div class="report-card">
-          <div class="report-header">
-            <h4>Annual Report – 2025</h4>
-            <span class="report-badge published">Published</span>
+          <div class="report-card-header">
+            <div>
+              <span class="report-badge badge-gold">Annual 2025</span>
+              <h4>Annual Report 2025</h4>
+              <p class="report-period">Full Year - January to December 2025</p>
+            </div>
+            <a href="#" class="btn btn-outline-sm">Download PDF</a>
           </div>
-          <div class="fund-bars">
-            <div class="fund-row">
-              <span>Education Programs</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:41%;background:#43b89c;">41%</div>
-              </div>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span class="bar-label">Education</span>
+              <div class="bar-track"><div class="bar-fill" style="width:41%;background:#0d7377"></div></div>
+              <span class="bar-pct">41%</span>
             </div>
-            <div class="fund-row">
-              <span>Healthcare Camps</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:24%;background:#0d7377;">24%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Healthcare</span>
+              <div class="bar-track"><div class="bar-fill" style="width:24%;background:#1565c0"></div></div>
+              <span class="bar-pct">24%</span>
             </div>
-            <div class="fund-row">
-              <span>Water &amp; Sanitation</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:22%;background:#f9a825;">22%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Water</span>
+              <div class="bar-track"><div class="bar-fill" style="width:22%;background:#43b89c"></div></div>
+              <span class="bar-pct">22%</span>
             </div>
-            <div class="fund-row">
-              <span>Admin &amp; Operations</span>
-              <div class="fund-bar-wrap">
-                <div class="fund-bar-fill" style="width:13%;background:#7b1fa2;">13%</div>
-              </div>
+            <div class="bar-row">
+              <span class="bar-label">Admin</span>
+              <div class="bar-track"><div class="bar-fill" style="width:13%;background:#bdbdbd"></div></div>
+              <span class="bar-pct">13%</span>
             </div>
           </div>
-          <div class="report-summary">
-            <span>Total Received: <strong>₹38,00,000</strong></span>
-            <span>Beneficiaries: <strong>9,200</strong></span>
-          </div>
-          <button class="btn btn-outline full-width">Download PDF Report</button>
         </div>
 
-        <div class="report-card impact-highlight">
-          <h4>2025 Impact Snapshot</h4>
-          <div class="impact-numbers">
-            <div class="in-item">
-              <span class="in-num">9,200</span>
-              <span class="in-lbl">Beneficiaries</span>
+        <div class="report-card report-card-dark">
+          <h4>Impact Snapshot</h4>
+          <p class="snapshot-period">Cumulative as of June 2026</p>
+          <div class="snapshot-grid">
+            <div class="snapshot-item">
+              <div class="snapshot-num">9,200</div>
+              <div class="snapshot-label">Beneficiaries Reached</div>
             </div>
-            <div class="in-item">
-              <span class="in-num">18,400</span>
-              <span class="in-lbl">Volunteer Hours</span>
+            <div class="snapshot-item">
+              <div class="snapshot-num">18,400</div>
+              <div class="snapshot-label">Volunteer Hours</div>
             </div>
-            <div class="in-item">
-              <span class="in-num">28</span>
-              <span class="in-lbl">Campaigns</span>
+            <div class="snapshot-item">
+              <div class="snapshot-num">28</div>
+              <div class="snapshot-label">Campaigns Completed</div>
             </div>
-            <div class="in-item">
-              <span class="in-num">96%</span>
-              <span class="in-lbl">Funds to Programs</span>
+            <div class="snapshot-item">
+              <div class="snapshot-num">96%</div>
+              <div class="snapshot-label">Funds to Programs</div>
             </div>
           </div>
-          <p class="impact-note">Only 4% spent on administration. 96 paise of every rupee goes directly to beneficiaries.</p>
+          <a href="#" class="btn btn-white-outline">View All Reports</a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== UPCOMING EVENTS ===== -->
-  <section class="section section-alt" id="events">
+  <!-- UPCOMING EVENTS -->
+  <section class="events-section section-pad" id="events">
     <div class="container">
       <div class="section-header">
+        <span class="section-label">Get Involved</span>
         <h2>Upcoming Events</h2>
-        <p>Join our camps, drives, and fundraising events near you</p>
+        <p>Join our events to connect with our community and contribute in person.</p>
       </div>
       <div class="events-grid">
+
         <div class="event-card">
-          <div class="event-date-box">
+          <div class="event-date-box" style="background:#0d7377">
             <span class="event-month">JUL</span>
-            <span class="event-day">08</span>
+            <span class="event-day">8</span>
           </div>
-          <div class="event-info">
-            <span class="event-type-tag fundraising">Fundraising Drive</span>
+          <div class="event-content">
+            <span class="event-badge badge-fundraising">Fundraising Drive</span>
             <h4>Annual Charity Gala 2026</h4>
-            <p>Location: Hotel Taj Lands End, Mumbai</p>
-            <p>Time: 6:00 PM – 10:00 PM</p>
-            <p>Seats: 120 / 200 filled</p>
+            <div class="event-details">
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Hotel Taj Lands End, Mumbai
+              </span>
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                6:00 PM - 10:00 PM
+              </span>
+              <span class="event-detail seats">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                120 / 200 seats filled
+              </span>
+            </div>
+            <a href="#" class="btn btn-primary">Register Now</a>
           </div>
-          <button class="btn btn-outline">Register</button>
         </div>
+
         <div class="event-card">
-          <div class="event-date-box">
+          <div class="event-date-box" style="background:#2e7d32">
             <span class="event-month">JUL</span>
             <span class="event-day">14</span>
           </div>
-          <div class="event-info">
-            <span class="event-type-tag volunteer">Volunteer Camp</span>
-            <h4>Tree Plantation Drive – Pune</h4>
-            <p>Location: Sinhagad Road, Pune</p>
-            <p>Time: 7:00 AM – 12:00 PM</p>
-            <p>Volunteers: 45 / 80 enrolled</p>
+          <div class="event-content">
+            <span class="event-badge badge-volunteer">Volunteer Camp</span>
+            <h4>Tree Plantation Drive Pune</h4>
+            <div class="event-details">
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Sinhagad Road, Pune
+              </span>
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7:00 AM - 12:00 PM
+              </span>
+              <span class="event-detail seats">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                45 / 80 volunteers
+              </span>
+            </div>
+            <a href="#" class="btn btn-primary">Register Now</a>
           </div>
-          <button class="btn btn-outline">Register</button>
         </div>
+
         <div class="event-card">
-          <div class="event-date-box">
+          <div class="event-date-box" style="background:#7b1fa2">
             <span class="event-month">JUL</span>
             <span class="event-day">22</span>
           </div>
-          <div class="event-info">
-            <span class="event-type-tag awareness">Awareness Drive</span>
+          <div class="event-content">
+            <span class="event-badge badge-awareness">Awareness Drive</span>
             <h4>Women's Health Awareness Camp</h4>
-            <p>Location: Nandurbar Community Centre</p>
-            <p>Time: 9:00 AM – 3:00 PM</p>
-            <p>Seats: 60 / 150 filled</p>
+            <div class="event-details">
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Nandurbar Community Centre
+              </span>
+              <span class="event-detail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                9:00 AM - 3:00 PM
+              </span>
+              <span class="event-detail seats">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                60 / 150 seats filled
+              </span>
+            </div>
+            <a href="#" class="btn btn-primary">Register Now</a>
           </div>
-          <button class="btn btn-outline">Register</button>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="nav-brand">
-            <span class="brand-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#43b89c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22V12"/>
-                <path d="M12 12C12 7 16 3 21 3C21 8 17 12 12 12Z"/>
-                <path d="M12 12C12 7 8 3 3 3C3 8 7 12 12 12Z"/>
-              </svg>
-            </span>
-            <span class="brand-name" style="color:#fff;">HopeConnect</span>
-          </div>
-          <p>Registered NGO · 80G &amp; 12A Certified<br />FCRA Approved · PAN: AABCH1234F</p>
-          <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter/X</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">WhatsApp</a>
-          </div>
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="#" class="logo logo-white">
+          <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="14" cy="14" r="13" fill="#43b89c"/>
+            <path d="M14 6c-4.418 0-8 3.582-8 8 0 2.21.895 4.21 2.343 5.657L14 22l5.657-2.343A7.963 7.963 0 0022 14c0-4.418-3.582-8-8-8z" fill="#fff" fill-opacity="0.3"/>
+            <circle cx="14" cy="14" r="3" fill="#fff"/>
+          </svg>
+          HopeConnect
+        </a>
+        <p>Building a more equitable world through community-driven programs in education, healthcare, water, and livelihood.</p>
+        <div class="reg-info">
+          <span>Reg. No: MH/2015/0047832</span>
+          <span>80G Certified</span>
+          <span>12A Certified</span>
+          <span>FCRA Registered</span>
+          <span>PAN: AABTH1234F</span>
         </div>
-        <div class="footer-col">
-          <h5>Quick Links</h5>
-          <a href="#">About Us</a>
-          <a href="#">Our Programs</a>
-          <a href="#">Campaigns</a>
-          <a href="#">Volunteer Portal</a>
-          <a href="#">Donor Portal</a>
-        </div>
-        <div class="footer-col">
-          <h5>Transparency</h5>
-          <a href="#">Annual Reports</a>
-          <a href="#">Fund Utilisation</a>
-          <a href="#">Audit Statements</a>
-          <a href="#">Impact Stories</a>
-          <a href="#">Tax Receipts</a>
-        </div>
-        <div class="footer-col">
-          <h5>Contact Us</h5>
-          <p>Email: info@hopeconnect.org</p>
-          <p>Phone: +91 98765 43210</p>
-          <p>Address: 12, NGO Colony, Pune – 411001</p>
-          <button class="btn btn-primary" style="margin-top:1rem;">Get in Touch</button>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2026 HopeConnect NGO. All rights reserved. | Privacy Policy | Terms of Use</p>
-        <p>Secure payments powered by Razorpay &amp; Stripe · PCI-DSS Compliant</p>
+
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">About HopeConnect</a></li>
+          <li><a href="#">Our Programs</a></li>
+          <li><a href="#campaigns">Campaigns</a></li>
+          <li><a href="#volunteers">Volunteer Portal</a></li>
+          <li><a href="#donate">Donor Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Transparency</h5>
+        <ul>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Fund Utilisation</a></li>
+          <li><a href="#">Audit Statements</a></li>
+          <li><a href="#">Impact Stories</a></li>
+          <li><a href="#">Tax Receipts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact Us</h5>
+        <ul class="contact-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@hopeconnect.org">info@hopeconnect.org</a>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +91 22 4567 8900
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Office 4B, Nariman Point, Mumbai - 400021, Maharashtra
+          </li>
+        </ul>
+        <a href="#" class="btn btn-outline-white-sm">Get in Touch</a>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>Copyright 2026 HopeConnect. All rights reserved. HopeConnect is a registered charitable trust under the Maharashtra Public Trusts Act, 1950.</p>
+        <p class="payment-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Secure payments via Razorpay | PCI-DSS Compliant | SSL Encrypted
+        </p>
       </div>
     </div>
   </footer>
 
   <script>
     // Hamburger menu toggle
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('open');
-    }
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', function () {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
 
-    // Donation amount chip selection
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    // Amount chip selection
+    const chips = document.querySelectorAll('.chip');
+    const customAmountInput = document.getElementById('customAmount');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        if (chip.dataset.amount === 'custom') {
+          customAmountInput.style.display = 'block';
+          customAmountInput.focus();
+        } else {
+          customAmountInput.style.display = 'none';
+        }
       });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const navbarHeight = document.getElementById('navbar').offsetHeight;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 16;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Navbar scroll shadow
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     });
   </script>
+
 </body>
 </html>
