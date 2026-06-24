@@ -3,20 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NGO Of India</title>
+  <title>NGO Of India - Making a Difference</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Placeholder for navbar -->
+
   <div id="navbar-placeholder"></div>
 
+  <header class="hero-section">
+    <div class="hero-content">
+      <h1>Empowering Communities, Transforming Lives</h1>
+      <p>Join us in our mission to create a better tomorrow for everyone in India. Every small step counts.</p>
+      <div class="hero-buttons">
+        <a href="#campaigns" class="btn btn-primary">Our Campaigns</a>
+        <a href="#donate" class="btn btn-secondary">Support Us</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="impact-section">
+    <div class="container">
+      <div class="stat-card">
+        <h3>50K+</h3>
+        <p>Lives Impacted</p>
+      </div>
+      <div class="stat-card">
+        <h3>12+</h3>
+        <p>Active Campaigns</p>
+      </div>
+      <div class="stat-card">
+        <h3>1,200+</h3>
+        <p>Volunteers</p>
+      </div>
+    </div>
+  </section>
+
   <script>
-    // Import nav.html into index.html
     fetch("nav.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("navbar-placeholder").innerHTML = data;
-      });
+      })
+      .catch(err => console.error("Error loading navbar: ", err));
   </script>
 </body>
 </html>
