@@ -3,127 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NGO Of India </title>
+  <title>NGO Of India</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Placeholder for navbar -->
+  <div id="navbar-placeholder"></div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#" class="logo">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <circle cx="14" cy="14" r="13" fill="#0d7377"/>
-          <path d="M14 6c-4.418 0-8 3.582-8 8 0 2.21.895 4.21 2.343 5.657L14 22l5.657-2.343A7.963 7.963 0 0022 14c0-4.418-3.582-8-8-8z" fill="#43b89c"/>
-          <circle cx="14" cy="14" r="3" fill="#fff"/>
-        </svg>
-        SQ NGO
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#campaigns">Campaigns</a></li>
-        <li><a href="#volunteers">Volunteers</a></li>
-        <li><a href="#donate">Donors</a></li>
-        <li><a href="#reports">Reports</a></li>
-        <li><a href="#events">Events</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="#" class="btn btn-outline">Login</a>
-        <a href="#donate" class="btn btn-primary">Donate Now</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-left">
-        <span class="hero-badge">Registered NGO | 80G | FCRA Certified</span>
-        <h1>Empowering Communities,<br/>Changing Lives</h1>
-        <p class="hero-sub">HopeConnect works at the grassroots level to deliver clean water, education, healthcare, and livelihood support to underserved communities across India. Every rupee donated creates real, measurable impact.</p>
-        <div class="hero-cta">
-          <a href="#donate" class="btn btn-primary btn-lg">Start Donating</a>
-          <a href="#volunteers" class="btn btn-outline-white btn-lg">Become a Volunteer</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-num"></span>
-            <span class="stat-label">Beneficiaries</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"></span>
-            <span class="stat-label">Funds Raised</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"></span>
-            <span class="stat-label">Volunteers</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num"></span>
-            <span class="stat-label">Campaigns</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-deco-bg">
-          <div class="deco-circle deco-circle-1"></div>
-          <div class="deco-circle deco-circle-2"></div>
-          <div class="deco-circle deco-circle-3"></div>
-        </div>
-        <div class="donation-live-card">
-          <div class="live-indicator">
-            <span class="live-dot"></span> Live Activity
-          </div>
-          <div class="live-donation">
-            <div class="donor-avatar">R</div>
-            <div class="donor-info">
-              <strong>Rahul M.</strong> donated
-              <span class="donation-amount"></span>
-              <div class="donation-campaign">to Clean Water Drive</div>
-            </div>
-          </div>
-          <div class="live-donation">
-            <div class="donor-avatar" style="background:#7b1fa2">P</div>
-            <div class="donor-info">
-              <strong>Priya S.</strong> donated
-              <span class="donation-amount"></span>
-              <div class="donation-campaign">to Books Drive 2026</div>
-            </div>
-          </div>
-          <div class="card-progress-wrap">
-            <div class="card-progress-label">
-              <span>Clean Water Drive</span><span></span>
-            </div>
-            <div class="card-progress-bar">
-              <div class="card-progress-fill" style="width:64%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ACTIVE CAMPAIGNS -->
-  
-
-  
-
-  <!-- VOLUNTEER SECTION -->
-  
-
-  <!-- TRANSPARENCY REPORTS -->
-  
-
- 
-
-  
-
-  
-
+  <script>
+    // Import nav.html into index.html
+    fetch("nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+      });
+  </script>
 </body>
 </html>
