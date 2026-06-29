@@ -1,0 +1,114 @@
+:root {
+    --bg-canvas: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --brand-emerald: #0f5132; /* Trust-building deep green corporate standard */
+    --accent-gold: #b5ac90;
+    --surface-white: #ffffff;
+    --border-slate: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+}
+
+.compliance-ribbon {
+    background: #000000;
+    color: #e2e8f0;
+    text-align: center;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.public-header {
+    background: linear-gradient(135deg, #093321 0%, var(--brand-emerald) 100%);
+    color: var(--surface-white);
+    padding: 3rem 2rem;
+    border-bottom: 4px solid var(--accent-gold);
+}
+.header-content { max-width: 1200px; margin: 0 auto; }
+.public-header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; }
+.public-header p { margin: 0.5rem 0 0 0; font-size: 1.05rem; opacity: 0.85; max-width: 700px; }
+
+.public-container { max-width: 1200px; margin: -2rem auto 4rem auto; padding: 0 1rem; }
+
+/* Metrics Banner Design */
+.impact-metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+.metric-box {
+    background: var(--surface-white);
+    padding: 1.75rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-slate);
+}
+.metric-box .label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; }
+.metric-box h2 { margin: 0.5rem 0 0.2rem 0; font-size: 2rem; color: var(--brand-emerald); font-weight: 800; }
+.metric-box .sub { font-size: 0.75rem; color: #94a3b8; }
+
+/* Component Split Matrices */
+.dashboard-split { display: grid; grid-template-columns: 1fr 400px; gap: 2rem; }
+@media (max-width: 960px) { .dashboard-split { grid-template-columns: 1fr; } }
+
+.section-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-slate);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+.section-card h2 { margin-top: 0; font-size: 1.4rem; color: #1e293b; font-weight: 700; }
+.section-desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 1.5rem; }
+
+/* Real-Time Campaign Track Components */
+.campaign-progress-node { margin-bottom: 1.75rem; border-bottom: 1px solid var(--border-slate); padding-bottom: 1.5rem; }
+.campaign-progress-node:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.campaign-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.campaign-meta h3 { margin: 0; font-size: 1.05rem; font-weight: 600; color: #1e293b; }
+.tag-status { font-size: 0.8rem; font-weight: 700; color: var(--brand-emerald); background: #e6f4ea; padding: 0.2rem 0.6rem; border-radius: 4px; }
+
+.progress-bar-container { background: #f1f5f9; height: 10px; border-radius: 9999px; overflow: hidden; margin-bottom: 0.5rem; }
+.progress-fill { background: var(--brand-emerald); height: 100%; border-radius: 9999px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+.progress-numbers { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary); }
+
+/* Financial Ledger Elements */
+.table-scroller { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+th, td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-slate); }
+th { background: #f8fafc; font-weight: 600; color: var(--text-secondary); }
+td code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; }
+.status-pill { background: #e2e8f0; color: #475569; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; font-size: 0.75rem; }
+.status-pill.verified { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+
+/* Micro-Checkout Widget Components */
+.payment-card { border-top: 4px solid var(--brand-emerald); }
+.card-hint { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.25rem; }
+.amount-toggle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+.amt-btn { background: #ffffff; border: 1px solid var(--border-slate); padding: 0.6rem; font-weight: 700; border-radius: 6px; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; }
+.amt-btn.active { background: var(--brand-emerald); color: white; border-color: var(--brand-emerald); }
+
+.input-element { margin-bottom: 1.2rem; }
+.input-element label { display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 0.4rem; }
+.input-element input { width: 100%; padding: 0.75rem; border: 1px solid var(--border-slate); border-radius: 6px; box-sizing: border-box; font-size: 0.95rem; }
+
+.execute-donation-btn { width: 100%; background: #000000; color: white; border: none; padding: 1rem; font-weight: 700; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.2s ease; }
+.execute-donation-btn:hover { background: var(--brand-emerald); }
+
+/* Live Donor Wall Layout */
+.donor-wall-container { max-height: 250px; overflow-y: auto; }
+.wall-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px dashed var(--border-slate); }
+.wall-row:last-child { border-bottom: none; }
+.donor-identity { font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+.donor-badge-val { font-size: 0.85rem; font-weight: 700; color: var(--brand-emerald); background: #f0fdf4; padding: 0.15rem 0.5rem; border-radius: 4px; }
