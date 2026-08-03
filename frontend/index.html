@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-Nexus — Empowering Communities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">MANARA<span>-NEXUS</span></a>
+  <ul class="nav-links">
+    <li><a href="#about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+    <li><a href="#programs"><i class="fa-solid fa-hand-holding-heart"></i> Programs</a></li>
+    <li><a href="#campaigns"><i class="fa-solid fa-bullhorn"></i> Campaigns</a></li>
+    <li><a href="#gallery"><i class="fa-solid fa-images"></i> Gallery</a></li>
+    <li><a href="#impact"><i class="fa-solid fa-chart-line"></i> Impact</a></li>
+    <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="login/adminLogin.html" class="btn-signin"><i class="fa-regular fa-user"></i> Sign In</a>
+    <a href="login/donorLogin.html" class="btn-donate ripple"><i class="fa-solid fa-heart"></i> Donate Now</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO — FULL SCREEN SLIDER
+══════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Slides (background images set via JS) -->
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1920&q=80')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&q=80')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1920&q=80')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1920&q=80')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?w=1920&q=80')"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?w=1920&q=80')"></div>
+
+  <!-- Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Indicators -->
+  <div class="hero-indicators">
+    <div class="indicator active"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+  </div>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#111827"/>
+    </svg>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════
+     ABOUThttp:
+══════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div data-aos="fade-right">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80" alt="Community work">
+          <div class="about-badge">
+            <span class="num">12+</span>
+            <span class="lbl">Years of Service</span>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="150">
+        <span class="section-label">About Manara-Nexus</span>
+        <h2 class="section-title">We Connect People<br>Who <span>Care</span></h2>
+        <p class="section-sub">Manara-Nexus is a platform that bridges donors, volunteers, and administrators to create meaningful, measurable impact across communities in India. We believe every contribution — big or small — changes lives.</p>
+        <ul class="about-list">
+          <li>Transparent donation tracking across all 4 cities</li>
+          <li>Dedicated volunteer task management system</li>
+          <li>Real-time reporting for administrators</li>
+          <li>Secure donor profile and transaction history</li>
+          <li>Community-driven campaigns and programs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PROGRAMS
+══════════════════════════════════ -->
+<section id="programs">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Our <span>Programs</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Every program is designed to address a real need — from hunger and education to healthcare and disaster relief.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card" data-aos="fade-up" data-aos-delay="0">
+        <span class="program-icon"><i class="fa-solid fa-utensils"></i></span>
+        <h3>Food Relief</h3>
+        <p>Daily meal distribution to underprivileged families and children across all our active cities.</p>
+        <span class="program-tag">Active</span>
+      </div>
+      <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="program-icon"><i class="fa-solid fa-book-open"></i></span>
+        <h3>Education Support</h3>
+        <p>Books, uniforms, and school supplies donated to students from low-income backgrounds.</p>
+        <span class="program-tag">Active</span>
+      </div>
+      <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="program-icon"><i class="fa-solid fa-hospital"></i></span>
+        <h3>Medical Camps</h3>
+        <p>Free health checkups, medicines, and awareness drives organized by our volunteer network.</p>
+        <span class="program-tag">Active</span>
+      </div>
+      <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+        <span class="program-icon"><i class="fa-solid fa-seedling"></i></span>
+        <h3>Environment</h3>
+        <p>Tree plantation drives, clean-up campaigns, and environmental awareness programs in urban areas.</p>
+        <span class="program-tag">Ongoing</span>
+      </div>
+      <div class="program-card" data-aos="fade-up" data-aos-delay="400">
+        <span class="program-icon"><i class="fa-solid fa-shirt"></i></span>
+        <h3>Clothing Drive</h3>
+        <p>Collecting and distributing clothes, blankets, and essentials to homeless and displaced families.</p>
+        <span class="program-tag">Seasonal</span>
+      </div>
+      <div class="program-card" data-aos="fade-up" data-aos-delay="500">
+        <span class="program-icon"><i class="fa-solid fa-house-chimney-medical"></i></span>
+        <h3>Shelter Support</h3>
+        <p>Partnering with local shelters to provide basic necessities and rehabilitation assistance.</p>
+        <span class="program-tag">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     IMPACT STATISTICS
+══════════════════════════════════ -->
+<section id="impact">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">Our Impact</span>
+      <h2 class="section-title" style="color:#0F172A;">Numbers That <span style="color:#0F172A;text-decoration:underline;text-decoration-color:#0F172A;">Speak</span></h2>
+    </div>
+    <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-box">
+        <span class="num" data-count="500" data-suffix="+">0</span>
+        <div class="lbl">Active Donors</div>
+      </div>
+      <div class="stat-box">
+        <span class="num" data-count="200" data-suffix="+">0</span>
+        <div class="lbl">Volunteers</div>
+      </div>
+      <div class="stat-box">
+        <span class="num" data-count="1200" data-suffix="+">0</span>
+        <div class="lbl">Families Helped</div>
+      </div>
+      <div class="stat-box">
+        <span class="num" data-count="50" data-suffix="+">0</span>
+        <div class="lbl">Campaigns Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     VOLUNTEER
+══════════════════════════════════ -->
+<section id="volunteer">
+  <div class="container">
+    <div class="volunteer-grid">
+      <div data-aos="fade-right">
+        <span class="section-label">Join Our Team</span>
+        <h2 class="section-title">Become a <span>Volunteer</span></h2>
+        <p class="section-sub">Our volunteers are the backbone of Manara-Nexus. Every hour you give creates a ripple of change in someone's life.</p>
+        <div class="volunteer-steps">
+          <div class="vstep">
+            <div class="vstep-num">01</div>
+            <div class="vstep-content">
+              <h4>Create Your Account</h4>
+              <p>Sign up with your details and interests in just a few minutes.</p>
+            </div>
+          </div>
+          <div class="vstep">
+            <div class="vstep-num">02</div>
+            <div class="vstep-content">
+              <h4>Browse Available Tasks</h4>
+              <p>See all active campaigns and community tasks near you.</p>
+            </div>
+          </div>
+          <div class="vstep">
+            <div class="vstep-num">03</div>
+            <div class="vstep-content">
+              <h4>Show Up &amp; Serve</h4>
+              <p>Attend the task, make a difference, and track your impact.</p>
+            </div>
+          </div>
+        </div>
+        <a href="login/volunteerLogin.html" class="btn-donate ripple" style="display:inline-block;margin-top:32px;text-decoration:none;"><i class="fa-solid fa-hands-helping"></i> Join as Volunteer</a>
+      </div>
+      <div class="volunteer-img" data-aos="fade-left" data-aos-delay="150">
+        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&q=80" alt="Volunteers working together">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     DONATION
+══════════════════════════════════ -->
+<section id="donation">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">Support a Cause</span>
+      <h2 class="section-title">Choose How You <span>Give</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Every rupee donated reaches directly to the people who need it most.</p>
+    </div>
+    <div class="donation-grid">
+      <div class="donation-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="donation-card-top">
+          <div class="donation-amount">₹500 <span>/ one-time</span></div>
+          <h3>Starter Contribution</h3>
+          <p>Provides a week's meals for one child in our feeding program.</p>
+        </div>
+        <div class="donation-card-bottom">
+          <a href="login/donorLogin.html" class="btn-donate-card">Donate ₹500</a>
+        </div>
+      </div>
+      <div class="donation-card featured" data-aos="fade-up" data-aos-delay="100">
+        <span class="featured-badge">POPULAR</span>
+        <div class="donation-card-top">
+          <div class="donation-amount">₹2,000 <span>/ one-time</span></div>
+          <h3>Community Builder</h3>
+          <p>Covers school supplies for one student for an entire academic year.</p>
+        </div>
+        <div class="donation-card-bottom">
+          <a href="login/donorLogin.html" class="btn-donate-card">Donate ₹2,000</a>
+        </div>
+      </div>
+      <div class="donation-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="donation-card-top">
+          <div class="donation-amount">₹5,000 <span>/ one-time</span></div>
+          <h3>Impact Champion</h3>
+          <p>Sponsors a full medical camp serving up to 50 families in one day.</p>
+        </div>
+        <div class="donation-card-bottom">
+          <a href="login/donorLogin.html" class="btn-donate-card">Donate ₹5,000</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CAMPAIGNS
+══════════════════════════════════ -->
+<section id="campaigns">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">Active Campaigns</span>
+      <h2 class="section-title">Campaigns Making <span>Change</span></h2>
+    </div>
+    <div class="campaigns-grid">
+      <div class="campaign-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="campaign-img" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80')">
+          <span class="campaign-cat">Food Relief</span>
+        </div>
+        <div class="campaign-body">
+          <h3>Feed 500 Families This Winter</h3>
+          <p>Help us provide warm meals and groceries to 500 families across Bengaluru this winter season.</p>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:72%"></div></div>
+          <div class="campaign-meta"><span><strong>₹72,000</strong> raised</span><span>Goal: ₹1,00,000</span></div>
+        </div>
+      </div>
+      <div class="campaign-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="campaign-img" style="background-image:url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80')">
+          <span class="campaign-cat">Education</span>
+        </div>
+        <div class="campaign-body">
+          <h3>Back to School — 200 Students</h3>
+          <p>Equipping 200 underprivileged students in Hyderabad with books, bags, and uniforms.</p>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:55%"></div></div>
+          <div class="campaign-meta"><span><strong>₹55,000</strong> raised</span><span>Goal: ₹1,00,000</span></div>
+        </div>
+      </div>
+      <div class="campaign-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="campaign-img" style="background-image:url('https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?w=600&q=80')">
+          <span class="campaign-cat">Healthcare</span>
+        </div>
+        <div class="campaign-body">
+          <h3>Free Health Camps — Chennai</h3>
+          <p>Organizing 10 free medical camps in underserved areas of Chennai over the next 3 months.</p>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:40%"></div></div>
+          <div class="campaign-meta"><span><strong>₹40,000</strong> raised</span><span>Goal: ₹1,00,000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GALLERY
+══════════════════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Gallery of <span>Impact</span></h2>
+    </div>
+    <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?w=600&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?w=800&q=80')">
+        <div class="gallery-overlay">🔍</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-title">Stories of <span>Hope</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Donating through Manara-Nexus was the easiest and most transparent experience I've had. I could track exactly where my money went.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="testi-name">Ravi Kumar</div>
+            <div class="testi-role">Donor — Bengaluru</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>I volunteered at three food camps through this platform. The task management system made it so organized and easy to coordinate.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">NR</div>
+          <div>
+            <div class="testi-name">Neha Reddy</div>
+            <div class="testi-role">Volunteer — Hyderabad</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>As an admin, managing donors across 4 cities was a challenge. Manara-Nexus simplified everything into one clean dashboard.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AS</div>
+          <div>
+            <div class="testi-name">Arjun Sharma</div>
+            <div class="testi-role">Admin — Chennai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     LATEST NEWS
+══════════════════════════════════ -->
+<section id="news">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-label">Latest Updates</span>
+      <h2 class="section-title">News &amp; <span>Stories</span></h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80')"></div>
+        <div class="news-body">
+          <div class="news-date">JULY 15, 2026</div>
+          <h3>Winter Food Drive Reaches 400 Families in Bengaluru</h3>
+          <p>Our latest food relief campaign exceeded targets, providing warm meals to over 400 families across three neighborhoods.</p>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80')"></div>
+        <div class="news-body">
+          <div class="news-date">JULY 08, 2026</div>
+          <h3>50 New Volunteers Onboarded in Mumbai This Month</h3>
+          <p>Manara-Nexus welcomed 50 passionate new volunteers in Mumbai, strengthening our on-ground team significantly.</p>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?w=600&q=80')"></div>
+        <div class="news-body">
+          <div class="news-date">JUNE 28, 2026</div>
+          <h3>Free Medical Camp Serves 300 Patients in Chennai</h3>
+          <p>Our volunteer doctors and nurses provided free consultations and medicines to 300 patients in underserved areas.</p>
+          <a href="#" class="news-link">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CONTACT
+══════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div data-aos="fade-right">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">We'd Love to <span>Hear</span> From You</h2>
+        <p class="section-sub">Whether you want to donate, volunteer, or just learn more — reach out and we will get back to you within 24 hours.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Our Cities</h4>
+              <p>Bengaluru · Hyderabad · Chennai · Mumbai</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4>Email Us</h4>
+              <p>contact@manara-nexus.org</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="150">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" class="form-control" placeholder="How can we help?">
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" class="form-control" placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit ripple">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">MANARA<span>-NEXUS</span></div>
+        <p class="footer-desc">Connecting donors, volunteers, and communities to build a more equitable and compassionate India — one act of kindness at a time.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#campaigns">Campaigns</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Portals</h4>
+        <ul>
+          <li><a href="login/adminLogin.html">Admin Login</a></li>
+          <li><a href="login/donorLogin.html">Donor Login</a></li>
+          <li><a href="login/volunteerLogin.html">Volunteer Login</a></li>
+          <li><a href="signup/donorSignup.html">Donor Signup</a></li>
+          <li><a href="signup/volunteerSignup.html">Volunteer Signup</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Cities</h4>
+        <ul>
+          <li><a href="#">Bengaluru</a></li>
+          <li><a href="#">Hyderabad</a></li>
+          <li><a href="#">Chennai</a></li>
+          <li><a href="#">Mumbai</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Manara-Nexus. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+<script>
+  // Contact form — live API connection
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const body = {
+      name   : this.querySelector('[name=name]').value.trim(),
+      email  : this.querySelector('[name=email]').value.trim(),
+      subject: this.querySelector('[name=subject]').value.trim(),
+      message: this.querySelector('[name=message]').value.trim(),
+    };
+    const btn = this.querySelector('.btn-submit');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify(body),
+      });
+      if (res.ok) {
+        btn.textContent = 'Message Sent ✓';
+        btn.style.background = '#2ecc71';
+        this.reset();
+      } else { btn.textContent = 'Failed. Try again.'; }
+    } catch { btn.textContent = 'Server offline. Try again.'; }
+    setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; btn.disabled = false; }, 3000);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus — Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background: #0F172A;
+            overflow: hidden;
+        }
+
+        /* ── Left Panel — Background Image ── */
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px;
+            position: relative;
+        }
+
+        .left-panel .brand {
+            position: absolute;
+            top: 40px; left: 60px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+        .left-panel .brand span { color: #D4AF37; }
+
+        .left-panel .quote {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            max-width: 420px;
+            margin-bottom: 16px;
+        }
+        .left-panel .quote span { color: #D4AF37; }
+        .left-panel .quote-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        /* ── Right Panel — Login Form ── */
+        .right-panel {
+            width: 480px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 50px;
+            position: relative;
+        }
+
+        .right-panel .back-link {
+            position: absolute;
+            top: 30px; left: 50px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+        .right-panel .back-link:hover { color: #0F172A; }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212,175,55,0.1);
+            color: #D4AF37;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 6px;
+        }
+        .form-sub {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 36px;
+        }
+
+        /* Alert */
+        #alertBox {
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: none;
+        }
+        #alertBox.error   { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        #alertBox.success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+        .input-wrap {
+            position: relative;
+        }
+        .input-wrap i {
+            position: absolute;
+            left: 14px; top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        .input-wrap input {
+            width: 100%;
+            padding: 13px 14px 13px 40px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            background: #f9fafb;
+        }
+        .input-wrap input:focus {
+            border-color: #D4AF37;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.12);
+        }
+        .input-wrap .toggle-pass {
+            position: absolute;
+            right: 14px; top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .input-wrap .toggle-pass:hover { color: #0F172A; }
+
+        /* Submit Button */
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: #0F172A;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-login:hover {
+            background: #D4AF37;
+            color: #0F172A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+        }
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+            color: #cbd5e1;
+            font-size: 0.82rem;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+        .signup-link a {
+            color: #D4AF37;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .signup-link a:hover { text-decoration: underline; }
+
+        /* Other login options */
+        .other-logins {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .other-login-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 16px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.2s;
+            background: #f9fafb;
+        }
+        .other-login-btn:hover {
+            border-color: #D4AF37;
+            background: rgba(212,175,55,0.05);
+            color: #0F172A;
+        }
+        .other-login-btn i { width: 18px; text-align: center; }
+        .other-login-btn .arrow { margin-left: auto; color: #cbd5e1; font-size: 0.8rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .left-panel { display: none; }
+            .right-panel { width: 100%; padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+        <div class="brand">MANARA<span>-NEXUS</span></div>
+        <div class="quote">Making a difference,<br><span>one donation</span> at a time.</div>
+        <div class="quote-sub">Join 500+ donors across India creating real impact.</div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+
+        <div class="role-badge">
+            <i class="fa-solid fa-shield-halved"></i> Admin Portal
+        </div>
+        <h2 class="form-title">Welcome back</h2>
+        <p class="form-sub">Sign in to your admin account</p>
+
+        <!-- Alert -->
+        <div id="alertBox"></div>
+
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrap">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" placeholder="admin@manara-nexus.org" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrap">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <i class="fa-regular fa-eye toggle-pass" id="togglePass"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Sign In as Admin
+            </button>
+        </form>
+
+        <div class="divider">or login as</div>
+
+        <div class="other-logins">
+            <a href="donorLogin.html" class="other-login-btn">
+                <i class="fa-solid fa-heart" style="color:#e63946;"></i>
+                Donor Login
+                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="volunteerLogin.html" class="other-login-btn">
+                <i class="fa-solid fa-star" style="color:#D4AF37;"></i>
+                Volunteer Login
+                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="../signup/adminSignup.html">Create one</a>
+        </div>
+    </div>
+
+<script src="../../assets/js/api.js"></script>
+<script>
+    // Already logged in — redirect
+    if (getToken() && getUser()?.role === 'admin') redirectToDashboard('admin');
+
+    // Toggle password visibility
+    document.getElementById('togglePass').addEventListener('click', function() {
+        const input = document.getElementById('password');
+        const isText = input.type === 'text';
+        input.type = isText ? 'password' : 'text';
+        this.className = isText ? 'fa-regular fa-eye toggle-pass' : 'fa-regular fa-eye-slash toggle-pass';
+    });
+
+    // Login form submit
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const btn      = document.getElementById('loginBtn');
+
+        btn.disabled    = true;
+        btn.innerHTML   = '<i class="fa-solid fa-spinner fa-spin"></i> Signing in...';
+
+        try {
+            const res = await api('POST', '/auth/login', { email, password });
+            if (res.user.role !== 'admin') {
+                showAlert('error', 'Access denied. Admin account required.');
+                btn.disabled  = false;
+                btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In as Admin';
+                return;
+            }
+            setToken(res.token);
+            setUser(res.user);
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Success! Redirecting...';
+            btn.style.background = '#16a34a';
+            setTimeout(() => redirectToDashboard('admin'), 800);
+        } catch (err) {
+            showAlert('error', err.message || 'Login failed. Please try again.');
+            btn.disabled  = false;
+            btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign In as Admin';
+        }
+    });
+
+    function showAlert(type, msg) {
+        const el = document.getElementById('alertBox');
+        el.className = type;
+        el.textContent = msg;
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 5000);
+    }
+</script>
+</body>
+</html>

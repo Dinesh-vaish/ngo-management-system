@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Admin Dashboard</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5">
+    <a class="navbar-brand" href="../index.html">Manara-Nexus</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="adminVolunteers.html">Volunteers</a></li>
+            <li class="nav-item"><a class="nav-link" href="../update/adminUpdate.html">Edit Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+
+    <!-- Stats -->
+    <div class="row mb-4" id="statsRow">
+        <div class="col-3"><div class="card text-center shadow p-3"><h3 id="statDonors">-</h3><p>Donors</p></div></div>
+        <div class="col-3"><div class="card text-center shadow p-3"><h3 id="statVols">-</h3><p>Volunteers</p></div></div>
+        <div class="col-3"><div class="card text-center shadow p-3"><h3 id="statAmount">-</h3><p>Total Donated</p></div></div>
+        <div class="col-3"><div class="card text-center shadow p-3"><h3 id="statPending">-</h3><p>Pending</p></div></div>
+    </div>
+
+    <!-- City filter -->
+    <div class="row mb-2">
+        <div class="col-auto">
+            <select id="cityFilter" class="form-control">
+                <option value="">All Cities</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
+        <div class="col-auto"><button class="btn btn-primary" onclick="loadDonors()">Filter</button></div>
+    </div>
+
+    <!-- Donors Table -->
+    <h5>Donors</h5>
+    <table class="table shadow bg-light rounded">
+        <thead class="thead-dark"><tr><th>Sno</th><th>Name</th><th>Email</th><th>City</th><th>Donated</th><th></th></tr></thead>
+        <tbody id="donorsTable"></tbody>
+    </table>
+</div>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('admin')) throw new Error('Unauthorized');
+
+    async function loadStats() {
+        try {
+            const res = await api('GET', '/admin/dashboard');
+            const d   = res.data;
+            document.getElementById('statDonors').textContent  = d.total_donors;
+            document.getElementById('statVols').textContent    = d.total_volunteers;
+            document.getElementById('statAmount').textContent  = '₹' + (d.total_amount || 0);
+            document.getElementById('statPending').textContent = d.pending_donations;
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    async function loadDonors() {
+        try {
+            const city  = document.getElementById('cityFilter').value;
+            const query = city ? `?city=${city}` : '';
+            const res   = await api('GET', `/admin/donors${query}`);
+            const tbody = document.getElementById('donorsTable');
+            tbody.innerHTML = '';
+            if (!res.data.length) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No donors found.</td></tr>';
+                return;
+            }
+            res.data.forEach((d, i) => {
+                tbody.innerHTML += `
+                  <tr>
+                    <th>${i+1}</th>
+                    <td>${d.name}</td>
+                    <td>${d.email}</td>
+                    <td>${d.city}</td>
+                    <td>₹${d.donor_details?.total_donated || 0}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeDonor('${d._id}','${d.name}')">Remove</button></td>
+                  </tr>`;
+            });
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    async function removeDonor(id, name) {
+        if (!confirm(`Remove donor "${name}"? This cannot be undone.`)) return;
+        try {
+            await api('DELETE', `/admin/users/${id}`);
+            showAlert('success', 'Donor removed.');
+            loadDonors();
+            loadStats();
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function(e) { e.preventDefault(); logout(); });
+    loadStats();
+    loadDonors();
+</script>
+</body>
+</html>

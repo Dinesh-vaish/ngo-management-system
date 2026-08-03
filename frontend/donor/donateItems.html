@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Donate Items</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <form class="form-signin" id="itemForm">
+        <h3 class="h3 mb-3 font-weight-normal">Donate Items</h3>
+        <p>Item Name: <input type="text" id="item_name" required></p>
+        <p>Category: <input type="text" id="category" placeholder="e.g. Clothing, Food, Books"></p>
+        <p>Quantity: <input type="number" id="quantity" value="1" min="1"></p>
+        <p>Condition:
+            <select id="item_condition">
+                <option value="new">New</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="poor">Poor</option>
+            </select>
+        </p>
+        <p>Pickup Required: <input type="checkbox" id="pickup_required"></p>
+        <p>Notes: <input type="text" id="notes"></p>
+        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+        <a href="../dashboard/donorDashboard.html" class="btn btn-lg btn-secondary">Cancel</a>
+    </form>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('donor')) throw new Error('Unauthorized');
+
+    document.getElementById('itemForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const body = {
+            item_name      : document.getElementById('item_name').value.trim(),
+            category       : document.getElementById('category').value.trim(),
+            quantity       : parseInt(document.getElementById('quantity').value),
+            item_condition : document.getElementById('item_condition').value,
+            pickup_required: document.getElementById('pickup_required').checked,
+            notes          : document.getElementById('notes').value.trim(),
+        };
+        if (!body.item_name) return showAlert('error', 'Item name is required.');
+        try {
+            await api('POST', '/items', body);
+            showAlert('success', 'Item donated successfully!');
+            setTimeout(() => window.location.href = '../dashboard/donorDashboard.html', 1500);
+        } catch (err) { showAlert('error', err.message); }
+    });
+</script>
+</body>
+</html>

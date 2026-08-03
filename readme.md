@@ -1,68 +1,262 @@
-# SQ NGO - Next-Gen NGO Management System 
+# Manara-Nexus — NGO Management System
+### Frontend Report
+## Project Overview
 
-> **Solving ground-level problems for Indian NGOs where the internet fails, but impact shouldn't.**
+**Manara-Nexus** is a web-based NGO Management System that connects **Donors**, **Volunteers**, and **Administrators** on a single platform to manage donations, tasks, and community impact across 4 cities in India.
 
----
+> This repository contains the complete **Frontend** of the project.  
+## What We Did
 
-## Why does the world need SQ NGO? (The Real-World Problems We Solve)
+### 1. Original Project (PHP Based)
+The project was originally built in **PHP + MySQL** with Bootstrap 4.
+- All pages were `.php` files mixed with HTML
+- Database connection via PDO
+- Session-based authentication
+- No separation of frontend and backend
 
-Traditional enterprise software is built for air-conditioned corporate offices. **SQ NGO is built for the rugged Indian terrains.** Here is how we tackle the biggest pain points in the non-profit sector:
+### 2. Frontend Separation
+We extracted and rebuilt the entire frontend into **pure HTML + CSS + JavaScript** — completely independent of any backend.
 
-### 1. The "No Internet in Villages" Problem
-* **The Pain:** 70% of ground-level NGO operations happen in rural environments with unstable or completely absent network connectivity. Field workers frequently face data loss or must carry heavy physical registers.
-* **Our Killer Solution:** Built explicitly as an **Offline-First PWA**. Field workers can register beneficiaries, take attendance, and log distribution metrics in the middle of a jungle or remote village. The moment device hardware detects cellular network restoration, data streams auto-sync safely via IndexedDB.
+- Removed all PHP logic from pages
+- Replaced dynamic PHP data with `// TODO: API` comments for backend developer
+- All 36 PHP files deleted
+- Clean folder structure created under `frontend/`
 
-### 2. The "Trust & FCRA Regulation" Nightmare
-* **The Pain:** Stringent Ministry of Home Affairs (MHA) compliance audits and strict foreign funding (FCRA) parameters mean minor ledger anomalies can cancel operating licenses. Modern donors require 100% visibility into capital distribution.
-* **Our Killer Solution:** Real-time public-facing **Transparency Portals** and budget variation controls. Every outgoing expense entry is backed by multi-level authorization workflows, keeping the NGO's books clean and legally compliant.
-
-### 3. The "Ghost Beneficiaries" Fraud
-* **The Pain:** Inefficient physical tracking ledgers create administrative loopholes, allowing fabricated entries that deplete resources and destroy donor trust.
-* **Our Killer Solution:** **GPS & QR-Based Check-ins**. Outbound logistics and village-level distribution camps deploy geo-fenced coordinates matching a strict 50m-500m precision threshold. This eliminates fake data entries.
-
----
-
-## Project Objectives & Scope
-
-### Core Objectives
-* **Coordination Engine:** Architect a multi-role administrative platform to seamlessly organize volunteers, financial backers, operational campaigns, and raw inventory assets.
-* **Capital Transparency:** Build programmatic audit paths tying individual transaction IDs back to active project outcomes to establish strong donor trust.
-* **Field Efficiency:** Streamline heavy ground-level logistical events like relief camps, medical drives, and continuous demographic surveying.
-
-### System Deliverables
-* **Central Analytics Dashboard:** Live summary windows tracking incoming liquidity trends, volunteer time contributions, and overall campaign target progression metrics.
-* **Identity Logistical Portal:** Integrated directories managing volunteer registration states, automated task assignments, and verified hours tracking.
-* **Goal-Oriented Campaign Pages:** Dynamic landing views with immediate micro-donation processing portals, interactive live progress bars, and a public donor wall.
-* **Beneficiary Impact Tracker:** Comprehensive relational mappings of demographic details linked directly to localized aid deployments.
+### 3. Renaming
+Project renamed from **"NGO Management System"** → **"Manara-Nexus"**  
+Updated across all 19 HTML files.
 
 ---
 
-## Technical Stack & Implementation
+## Tech Stack
 
-The architecture is designed for multi-tenant data safety, high performance across low-tier mobile hardware, and seamless offline data preservation.
-
-* **Frontend Engine:** Responsive UI structured with modern HTML5 Semantic tags and CSS3 custom variables for a compassionate and trustworthy aesthetic. Dynamic DOM operations, validation, and layout routing handled via vanilla JavaScript (ES6+).
-* **Storage Layer:** Uses client-side **IndexedDB API** structures for local offline state persistence, tracking queue transactions until network handshakes are recovered.
-* **Backend Matrix:** Highly scalable REST API infrastructure designed with strict multi-tenant isolation layers.
-* **Database Architecture:** Relational layout optimized using structural `Tenant_ID` row-level partitioning keys to guarantee 100% data privacy between multiple independent non-profit organizations.
-
----
-
-## Key Features & Superpowers
-
-| Feature | What it does | System Superpower |
-| :--- | :--- | :--- |
-| **Geo-Impact Mapping** | Renders distribution clusters and beneficiary counts onto an interactive geographic map visualization. | Absolute visual deployment proof for high-tier enterprise donors. |
-| **Integrated Payment Gateways** | Handles singular or long-term recurring payment schedules securely using Stripe, Razorpay, or PayPal SDK hooks. | Removes third-party collection friction, reducing donor drop-off metrics. |
-| **Tax-Receipt Automation** | Instantly compiles and emails structured, tax-compliant (80G/FCRA) PDF certificates to donors in under 60 seconds. | Eliminates manual document preparation and administrative overloads. |
-| **Smart Supply Inventory** | Automatically tracks stockpile metrics, throwing low-threshold alerts for essential items like dry rations and primary medical kits. | Protects disaster camps from unforeseen warehouse shortfalls during field operations. |
-| **Volunteer Hours Engine** | Programmatically captures logged, approved volunteer work hours and issues verified digital certificates. | Drives engagement metrics and rewards student networks transparently. |
-| **Transparency Reports** | Publishes financial summaries and fund utilization statistics publicly for immediate access. | Builds public donor trust and satisfies regulatory audits automatically. |
+| Layer | Technology |
+|---|---|
+| Markup | HTML5 (Semantic) |
+| Styling | CSS3 + Bootstrap 4 |
+| Icons | Font Awesome 6.5 (CDN) |
+| Fonts | Google Fonts — Inter |
+| Scripting | Vanilla JavaScript (ES6) |
+| Dev Server | Python `http.server` (port 5500) |
 
 ---
 
-## Future Roadmap (AI & Predictive Insights)
+## Folder Structure
 
-- [ ] **Donation Forecasting Engine:** Deploy machine learning models to forecast operational liquid cash flows across a rolling 3-month window using historical 24-month trend logs.
-- [ ] **Campaign Success Predictor:** Automated daily health monitoring scripts over active fundraisers to flag slowing traction profiles early.
-- [ ] **Social Media Integration Webhooks:** One-click template distribution pipelines sending active campaign progress milestones straight out onto linked brand feeds (Instagram, LinkedIn).
+```
+NGO-Management-System/
+│
+├── frontend/                        ← All frontend files
+│   ├── index.html                   ← Main landing page
+│   │
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── style.css            ← Custom CSS (full design)
+│   │   └── js/
+│   │       └── script.js            ← Slider, AOS, Ripple, Counter JS
+│   │
+│   ├── login/
+│   │   ├── adminLogin.html
+│   │   ├── donorLogin.html
+│   │   └── volunteerLogin.html
+│   │
+│   ├── signup/
+│   │   ├── adminSignup.html
+│   │   ├── donorSignup.html
+│   │   └── volunteerSignup.html
+│   │
+│   ├── dashboard/
+│   │   ├── adminDashboard.html      ← City-wise donor tables
+│   │   ├── adminVolunteers.html     ← Volunteers list
+│   │   ├── donorDashboard.html      ← Donation summary + items
+│   │   └── volunteerDashboard.html  ← Tasks view
+│   │
+│   ├── donor/
+│   │   ├── details.html             ← Bank details form
+│   │   ├── donateMoney.html         ← Donate amount form
+│   │   ├── donateItems.html         ← Donate items form
+│   │   └── transactions.html        ← Transaction history
+│   │
+│   ├── volunteer/
+│   │   └── tasks.html               ← Add task form
+│   │
+│   └── update/
+│       ├── adminUpdate.html
+│       ├── donorUpdate.html
+│       └── volunteerUpdate.html
+│
+├── bootstrap/                       ← Bootstrap 4 CSS + JS assets
+│   ├── css/
+│   │   ├── bootstrap.min.css
+│   │   └── style.css
+│   └── js/
+│       ├── bootstrap.min.js
+│       ├── jquery.min.js
+│       └── popper.min.js
+│
+├── images/                          ← Project images
+│   ├── admin.png
+│   ├── donors.png
+│   ├── volunteer.png
+│   └── index/
+│       └── logo.png, carousel images
+│
+├── sql/
+│   └── ngo.sql                      ← Database schema (for backend)
+│
+└── README.md                        ← This file
+```
+
+---
+
+## Pages Built (Total: 19 HTML Pages)
+
+| Page | Path | Description |
+|---|---|---|
+| Home | `index.html` | Full landing page with all sections |
+| Admin Login | `login/adminLogin.html` | Admin login form |
+| Donor Login | `login/donorLogin.html` | Donor login form |
+| Volunteer Login | `login/volunteerLogin.html` | Volunteer login form |
+| Admin Signup | `signup/adminSignup.html` | Admin registration |
+| Donor Signup | `signup/donorSignup.html` | Donor registration |
+| Volunteer Signup | `signup/volunteerSignup.html` | Volunteer registration |
+| Admin Dashboard | `dashboard/adminDashboard.html` | City-wise donor management |
+| Admin Volunteers | `dashboard/adminVolunteers.html` | Volunteer management |
+| Donor Dashboard | `dashboard/donorDashboard.html` | Donations + items view |
+| Volunteer Dashboard | `dashboard/volunteerDashboard.html` | Tasks view |
+| Bank Details | `donor/details.html` | Donor bank details form |
+| Donate Money | `donor/donateMoney.html` | Money donation form |
+| Donate Items | `donor/donateItems.html` | Item donation form |
+| Transactions | `donor/transactions.html` | Transaction history table |
+| Add Task | `volunteer/tasks.html` | Volunteer task form |
+| Admin Update | `update/adminUpdate.html` | Admin profile edit |
+| Donor Update | `update/donorUpdate.html` | Donor profile edit |
+| Volunteer Update | `update/volunteerUpdate.html` | Volunteer profile edit |
+
+---
+
+## Landing Page (index.html) Sections
+
+| # | Section | Features |
+|---|---|---|
+| 1 | Navbar | Transparent → dark glass on scroll, FA icons, Sign In + Donate button |
+| 2 | Hero | Full screen (100vh), 6-image auto slider, 3s fade transition, indicators |
+| 3 | About | Two-column layout, image + content, years badge |
+| 4 | Programs | 6 program cards, FA icons, hover lift effect |
+| 5 | Impact Stats | Gold background, counter animation on scroll |
+| 6 | Volunteer | Steps layout, image, join button |
+| 7 | Donation | 3 tier cards (₹500 / ₹2000 / ₹5000), featured badge |
+| 8 | Campaigns | 3 cards with progress bars and amounts |
+| 9 | Gallery | CSS Grid, 2-row layout, hover overlay |
+| 10 | Testimonials | 3 cards with star ratings and avatars |
+| 11 | Latest News | 3 news cards with images |
+| 12 | Contact | Form + contact info with FA icons |
+| 13 | Footer | 4-column grid, social FA icons, links |
+
+---
+
+## User Roles
+
+### Admin
+- View donors city-wise (Bengaluru, Hyderabad, Chennai, Mumbai)
+- See total donations
+- Remove donors
+- Manage volunteers
+
+### Donor
+- Register and login
+- Fill bank details
+- Donate money (track total)
+- Donate items
+- View transaction history
+- Edit profile
+
+### Volunteer
+- Register and login
+- View all running tasks
+- Add new tasks
+- Edit profile
+
+---
+
+## Colors Used
+
+| Name | Hex |
+|---|---|
+| Background | `#0F172A` |
+| Gold (Primary) | `#D4AF37` |
+| White | `#FFFFFF` |
+| Gray | `#CBD5E1` |
+| Dark Secondary | `#1E293B` |
+| Section Dark | `#111827` |
+
+---
+
+## JavaScript Features
+
+| Feature | Description |
+|---|---|
+| Hero Slider | 6 images, auto-play every 3s, smooth fade, indicator click |
+| Navbar Scroll | Transparent → dark glass blur after 60px scroll |
+| AOS Animations | Scroll-triggered fade-up / fade-left / fade-right |
+| Counter Animation | Numbers count up when Impact section enters viewport |
+| Button Ripple | Click ripple effect on all CTA buttons |
+| Contact Form | Submit feedback with success state |
+| Smooth Scroll | All anchor links scroll smoothly |
+
+---
+
+## How to Run
+
+```bash
+# Python (recommended)
+cd frontend
+python -m http.server 5500
+
+# Then open in browser:
+http://localhost:5500/index.html
+```
+
+---
+
+## Backend Integration Notes
+
+Backend developer ko yeh API endpoints banana hain:
+
+| Method | Endpoint | Use |
+|---|---|---|
+| POST | `/api/admin/login` | Admin login |
+| POST | `/api/donor/login` | Donor login |
+| POST | `/api/volunteer/login` | Volunteer login |
+| POST | `/api/admin/signup` | Admin register |
+| POST | `/api/donor/signup` | Donor register |
+| POST | `/api/volunteer/signup` | Volunteer register |
+| GET | `/api/admin/donors?city_id=1` | City-wise donors |
+| GET | `/api/admin/totalDonations` | Total donations |
+| DELETE | `/api/admin/donor/:id` | Remove donor |
+| GET | `/api/donor/account` | Donor account info |
+| POST | `/api/donor/donateMoney` | Add donation |
+| GET | `/api/donor/transactions` | Transaction history |
+| POST | `/api/donor/donateItems` | Donate item |
+| GET | `/api/donor/items` | Donor items list |
+| GET | `/api/tasks/all` | All tasks |
+| GET | `/api/volunteer/tasks` | My tasks |
+| POST | `/api/volunteer/tasks` | Add task |
+| GET | `/api/*/profile` | Get profile |
+| PUT | `/api/*/profile` | Update profile |
+| POST | `/api/logout` | Logout |
+
+Database schema is available in `sql/ngo.sql`
+
+---
+
+## Team
+
+| Role | Work Done |
+|---|---|
+| Frontend Developer | HTML, CSS, JS — all 19 pages + landing page |
+| Backend Developer | PHP + MySQL API (in progress) |
+
+---
+
+*Manara-Nexus © 2026. Built with purpose.*

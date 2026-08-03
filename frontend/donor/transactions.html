@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Transactions</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark p-3 mb-4">
+    <a class="navbar-brand" href="../dashboard/donorDashboard.html">← Back</a>
+</nav>
+<div class="container">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <h4>Your Transactions</h4>
+    <table class="table shadow bg-light rounded mt-3">
+        <thead class="thead-dark">
+            <tr><th>Sno</th><th>Date</th><th>Amount</th><th>Mode</th><th>Status</th><th>Receipt</th><th></th></tr>
+        </thead>
+        <tbody id="txTable"></tbody>
+    </table>
+</div>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('donor')) throw new Error('Unauthorized');
+
+    async function loadTransactions() {
+        try {
+            const res   = await api('GET', '/donations/my');
+            const tbody = document.getElementById('txTable');
+            tbody.innerHTML = '';
+            if (!res.data.length) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No transactions yet.</td></tr>';
+                return;
+            }
+            res.data.forEach((d, i) => {
+                const date = new Date(d.createdAt).toLocaleDateString('en-IN');
+                const badge = d.status === 'verified' ? 'success' : d.status === 'rejected' ? 'danger' : 'warning';
+                tbody.innerHTML += `
+                  <tr>
+                    <th>${i+1}</th>
+                    <td>${date}</td>
+                    <td>₹${d.amount}</td>
+                    <td>${d.payment_mode}</td>
+                    <td><span class="badge badge-${badge}">${d.status}</span></td>
+                    <td><small>${d.receipt_number}</small></td>
+                    <td><a href="${'http://localhost:5000/api'}/donations/${d._id}/receipt" target="_blank" class="btn btn-sm btn-outline-secondary">PDF</a></td>
+                  </tr>`;
+            });
+        } catch (err) { showAlert('error', err.message); }
+    }
+    loadTransactions();
+</script>
+</body>
+</html>

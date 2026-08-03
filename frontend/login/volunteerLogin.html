@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Volunteer Login</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+
+    <div id="alertBox" class="alert" role="alert" style="display:none;"></div>
+
+    <form class="form-signin" id="volunteerLoginForm">
+        <img class="mb-4" src="../../images/index/logo.png" alt="Manara-Nexus Logo" width="72" height="72">
+        <h3 class="h3 mb-3 font-weight-normal">Volunteer Login</h3>
+        <p>
+            <label for="email">Email :</label>
+            <input type="email" id="email" required>
+        </p>
+        <p>
+            <label for="password">Password :</label>
+            <input type="password" id="password" required>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-lg btn-primary">Login</button>
+            <button type="button" class="btn btn-lg btn-secondary" onclick="window.location.href='../index.html'">Cancel</button>
+        </p>
+    </form>
+    <a class="btn btn-secondary" href="../signup/volunteerSignup.html" role="button">Sign UP »</a>
+
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/popper.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (getToken() && getUser()?.role === 'volunteer') redirectToDashboard('volunteer');
+
+    document.getElementById('volunteerLoginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        try {
+            const res = await api('POST', '/auth/login', { email, password });
+            if (res.user.role !== 'volunteer') { showAlert('error', 'Access denied. Volunteer account required.'); return; }
+            setToken(res.token);
+            setUser(res.user);
+            redirectToDashboard('volunteer');
+        } catch (err) { showAlert('error', err.message || 'Login failed.'); }
+    });
+</script>
+</body>
+</html>

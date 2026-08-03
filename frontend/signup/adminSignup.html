@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Admin Signup</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+
+    <div id="alertBox" class="alert" style="display:none;"></div>
+
+    <form class="form-signin" id="adminSignupForm">
+        <img class="mb-4" src="../../images/index/logo.png" alt="Manara-Nexus Logo" width="72" height="72">
+        <h3 class="h3 mb-3 font-weight-normal">Admin Signup</h3>
+
+        <p>Name: <input type="text" id="name" required></p>
+        <p>Email: <input type="email" id="email" required></p>
+        <p>Password: <input type="password" id="password" required></p>
+        <p>Phone: <input type="text" id="phone" required></p>
+        <p>City:
+            <select id="city">
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </p>
+        <br>
+        <button type="submit" class="btn btn-lg btn-primary">Register</button>
+        <button type="button" class="btn btn-lg btn-secondary" onclick="window.location.href='../login/adminLogin.html'">Cancel</button>
+    </form>
+
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/popper.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (getToken() && getUser()?.role === 'admin') redirectToDashboard('admin');
+
+    document.getElementById('adminSignupForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const body = {
+            name    : document.getElementById('name').value.trim(),
+            email   : document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            phone   : document.getElementById('phone').value.trim(),
+            city    : document.getElementById('city').value,
+        };
+        if (!body.name || !body.email || !body.password || !body.phone)
+            return showAlert('error', 'All fields are required.');
+        try {
+            // Admin register karne ke liye pehle existing admin ka token chahiye
+            const res = await api('POST', '/auth/register/admin', body);
+            setToken(res.token);
+            setUser(res.user);
+            redirectToDashboard('admin');
+        } catch (err) { showAlert('error', err.message || 'Registration failed.'); }
+    });
+</script>
+</body>
+</html>

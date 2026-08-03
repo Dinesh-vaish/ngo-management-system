@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Donate Money</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <form class="form-signin" id="donateForm">
+        <h3 class="h3 mb-3 font-weight-normal">Enter Amount To Donate</h3>
+        <p>Donation Amount (₹): <input type="number" id="amount" min="1" value="0" required></p>
+        <p>Payment Mode:
+            <select id="payment_mode">
+                <option value="cash">Cash</option>
+                <option value="upi">UPI</option>
+                <option value="bank_transfer">Bank Transfer</option>
+                <option value="cheque">Cheque</option>
+                <option value="online">Online (Razorpay)</option>
+            </select>
+        </p>
+        <p>Transaction Ref (optional): <input type="text" id="transaction_ref"></p>
+        <button type="submit" class="btn btn-lg btn-primary">Submit Donation</button>
+        <a href="../dashboard/donorDashboard.html" class="btn btn-lg btn-secondary">Cancel</a>
+    </form>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('donor')) throw new Error('Unauthorized');
+
+    // Get campaign from URL if present
+    const params      = new URLSearchParams(window.location.search);
+    const campaign_id = params.get('campaign') || null;
+
+    document.getElementById('donateForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const amount       = parseFloat(document.getElementById('amount').value);
+        const payment_mode = document.getElementById('payment_mode').value;
+        const transaction_ref = document.getElementById('transaction_ref').value.trim();
+        if (!amount || amount <= 0) return showAlert('error', 'Enter a valid amount.');
+        try {
+            if (payment_mode === 'online') {
+                // Razorpay flow
+                const orderRes = await api('POST', '/donations/razorpay/order', { amount, campaign_id });
+                const options  = {
+                    key      : orderRes.key_id,
+                    amount   : orderRes.amount,
+                    currency : orderRes.currency,
+                    order_id : orderRes.order_id,
+                    name     : 'Manara-Nexus',
+                    description: 'Donation',
+                    handler  : async function(response) {
+                        await api('POST', '/donations/razorpay/verify', {
+                            razorpay_order_id  : response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature : response.razorpay_signature,
+                            donation_id: orderRes.donation_id,
+                            campaign_id, amount,
+                        });
+                        showAlert('success', 'Payment successful!');
+                        setTimeout(() => window.location.href = '../dashboard/donorDashboard.html', 1500);
+                    },
+                };
+                const rzp = new Razorpay(options);
+                rzp.open();
+            } else {
+                await api('POST', '/donations', { amount, payment_mode, transaction_ref, campaign_id });
+                showAlert('success', `Donated ₹${amount} successfully!`);
+                setTimeout(() => window.location.href = '../dashboard/donorDashboard.html', 1500);
+            }
+        } catch (err) { showAlert('error', err.message); }
+    });
+</script>
+</body>
+</html>

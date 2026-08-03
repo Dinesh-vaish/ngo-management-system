@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Donor Dashboard</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5">
+    <a class="navbar-brand" href="../index.html">Manara-Nexus</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="../update/donorUpdate.html">Edit Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <h4>Welcome, <span id="donorName"></span></h4>
+    <div class="row mt-4" id="donationSection"></div>
+    <div class="row mt-4">
+        <div class="col-6"><h5>Donate Items Here</h5></div>
+        <div class="col-6"><a class="btn btn-primary" href="../donor/donateItems.html">Donate Items</a></div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>Items You Donated</h5>
+            <table class="table shadow bg-light rounded">
+                <thead class="thead-dark"><tr><th>Sno</th><th>Item</th><th>Status</th></tr></thead>
+                <tbody id="itemsTable"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('donor')) throw new Error('Unauthorized');
+    const user = getUser();
+    document.getElementById('donorName').textContent = user.name;
+
+    async function loadDashboard() {
+        try {
+            // Load profile (total donated)
+            const profile = await api('GET', '/profile');
+            const total   = profile.data.profile?.total_donated || 0;
+            const sec     = document.getElementById('donationSection');
+            if (total > 0) {
+                sec.innerHTML = `
+                  <div class="col-6"><h5 class="shadow p-3 bg-light rounded">Your Overall Donations: ₹${total}</h5></div>
+                  <div class="col-6">
+                    <a class="btn btn-primary mr-2" href="../donor/donateMoney.html">Donate Money</a>
+                    <a class="btn btn-outline-primary" href="../donor/transactions.html">Transactions</a>
+                  </div>`;
+            } else {
+                sec.innerHTML = `
+                  <div class="col-6"><h5 class="shadow p-3 bg-light rounded">Fill Your Details To Donate Money</h5></div>
+                  <div class="col-6"><a class="btn btn-primary" href="../donor/details.html">Fill Details</a></div>`;
+            }
+
+            // Load donated items
+            const items = await api('GET', '/items/my');
+            const tbody = document.getElementById('itemsTable');
+            tbody.innerHTML = '';
+            if (items.data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="text-center text-muted">No items donated yet.</td></tr>';
+            } else {
+                items.data.forEach((item, i) => {
+                    tbody.innerHTML += `<tr><th>${i+1}</th><td>${item.item_name}</td><td><span class="badge badge-secondary">${item.status}</span></td></tr>`;
+                });
+            }
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function(e) { e.preventDefault(); logout(); });
+    loadDashboard();
+</script>
+</body>
+</html>

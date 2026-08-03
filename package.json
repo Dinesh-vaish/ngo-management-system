@@ -1,0 +1,13 @@
+{
+  "name": "manara-nexus",
+  "version": "1.0.0",
+  "description": "Manara-Nexus NGO Management System — Start Script",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && python -m http.server 3000"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

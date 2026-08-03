@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Donor Details</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+
+    <div id="alertSuccess" class="alert alert-success" role="alert" style="display:none;"></div>
+    <div id="alertError" class="alert alert-danger" role="alert" style="display:none;"></div>
+
+    <form class="form-signin" id="detailsForm">
+        <h1 class="h3 mb-3 font-weight-normal">Enter Your Details</h1>
+
+        <p>bank:
+            <input type="text" name="bank" id="bank" size="60">
+        </p>
+        <p>ifsc_code:
+            <input type="text" name="ifsc_code" id="ifsc_code" size="60">
+        </p>
+        <p>Account No:
+            <input type="text" name="acount" id="acount" size="60">
+        </p>
+        <p>Initial Donation:
+            <input type="number" value="0" name="donation" id="donation" size="60">
+        </p>
+        <input type="submit" class="btn btn-lg btn-primary btn-bloc" value="Submit">
+        <input type="button" class="btn btn-lg btn-primary btn-bloc" value="Cancel"
+            onclick="window.location.href='../dashboard/donorDashboard.html'">
+    </form>
+
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/popper.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('detailsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const bank     = document.getElementById('bank').value.trim();
+        const ifsc     = document.getElementById('ifsc_code').value.trim();
+        const acount   = document.getElementById('acount').value.trim();
+        const donation = document.getElementById('donation').value;
+
+        if (!bank || !ifsc || !acount) {
+            showAlert('error', 'All fields are required.');
+            return;
+        }
+        // TODO: POST /api/donor/details { bank, ifsc_code, acount, donation }
+        showAlert('success', 'Details saved successfully.');
+        setTimeout(function() {
+            window.location.href = '../dashboard/donorDashboard.html';
+        }, 1000);
+    });
+
+    function showAlert(type, msg) {
+        document.getElementById('alertSuccess').style.display = 'none';
+        document.getElementById('alertError').style.display = 'none';
+        if (type === 'success') {
+            document.getElementById('alertSuccess').textContent = msg;
+            document.getElementById('alertSuccess').style.display = 'block';
+        } else {
+            document.getElementById('alertError').textContent = msg;
+            document.getElementById('alertError').style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

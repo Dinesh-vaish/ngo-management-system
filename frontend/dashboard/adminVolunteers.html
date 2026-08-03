@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Volunteers</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark p-3 mb-4">
+    <a class="navbar-brand" href="adminDashboard.html">← Admin Dashboard</a>
+    <a class="nav-link text-white ml-auto" href="#" id="logoutBtn">Logout</a>
+</nav>
+<div class="container">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <h4>Volunteers</h4>
+    <table class="table shadow bg-light rounded mt-3">
+        <thead class="thead-dark">
+            <tr><th>Sno</th><th>Name</th><th>Email</th><th>City</th><th>Interests</th><th>Tasks Done</th><th></th></tr>
+        </thead>
+        <tbody id="volTable"></tbody>
+    </table>
+</div>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('admin')) throw new Error('Unauthorized');
+
+    async function loadVolunteers() {
+        try {
+            const res   = await api('GET', '/admin/volunteers');
+            const tbody = document.getElementById('volTable');
+            tbody.innerHTML = '';
+            if (!res.data.length) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No volunteers found.</td></tr>';
+                return;
+            }
+            res.data.forEach((v, i) => {
+                tbody.innerHTML += `
+                  <tr>
+                    <th>${i+1}</th>
+                    <td>${v.name}</td>
+                    <td>${v.email}</td>
+                    <td>${v.city}</td>
+                    <td>${v.volunteer_details?.interests || '-'}</td>
+                    <td>${v.volunteer_details?.tasks_done || 0}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeVol('${v._id}','${v.name}')">Remove</button></td>
+                  </tr>`;
+            });
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    async function removeVol(id, name) {
+        if (!confirm(`Remove volunteer "${name}"?`)) return;
+        try {
+            await api('DELETE', `/admin/users/${id}`);
+            showAlert('success', 'Volunteer removed.');
+            loadVolunteers();
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function(e) { e.preventDefault(); logout(); });
+    loadVolunteers();
+</script>
+</body>
+</html>

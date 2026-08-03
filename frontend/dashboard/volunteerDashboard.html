@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Volunteer Dashboard</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5">
+    <a class="navbar-brand" href="../index.html">Manara-Nexus</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="../update/volunteerUpdate.html">Edit Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <div class="row">
+        <div class="col-6"><h5>All Running Tasks</h5></div>
+        <div class="col-6"><h5>My Tasks <a class="btn btn-primary btn-sm" href="../volunteer/tasks.html">Add Task</a></h5></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-6">
+            <table class="table shadow bg-light rounded">
+                <thead class="thead-dark"><tr><th>Sno</th><th>Task</th><th>Priority</th></tr></thead>
+                <tbody id="allTasksTable"></tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <table class="table shadow bg-light rounded">
+                <thead class="thead-dark"><tr><th>Sno</th><th>Task</th><th>Status</th><th></th></tr></thead>
+                <tbody id="myTasksTable"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('volunteer')) throw new Error('Unauthorized');
+
+    async function loadDashboard() {
+        try {
+            const res = await api('GET', '/tasks');
+            const allTasks = res.data;
+            const user     = getUser();
+
+            const allBody = document.getElementById('allTasksTable');
+            const myBody  = document.getElementById('myTasksTable');
+            allBody.innerHTML = ''; myBody.innerHTML = '';
+
+            if (!allTasks.length) {
+                allBody.innerHTML = '<tr><td colspan="3" class="text-muted text-center">No tasks yet.</td></tr>';
+            }
+            allTasks.forEach((t, i) => {
+                allBody.innerHTML += `<tr><th>${i+1}</th><td>${t.title}</td><td><span class="badge badge-warning">${t.priority}</span></td></tr>`;
+                if (t.assigned_to?._id === user.id || t.assigned_to === user.id) {
+                    myBody.innerHTML += `
+                      <tr>
+                        <th>${i+1}</th><td>${t.title}</td>
+                        <td><span class="badge badge-info">${t.status}</span></td>
+                        <td>
+                          ${t.status !== 'completed' ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t._id}')">Done</button>` : ''}
+                        </td>
+                      </tr>`;
+                }
+            });
+
+            if (!myBody.innerHTML)
+                myBody.innerHTML = '<tr><td colspan="4" class="text-muted text-center">No tasks assigned yet.</td></tr>';
+
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    async function completeTask(id) {
+        try {
+            await api('PATCH', `/tasks/${id}/status`, { status: 'completed' });
+            showAlert('success', 'Task marked as completed!');
+            loadDashboard();
+        } catch (err) { showAlert('error', err.message); }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function(e) { e.preventDefault(); logout(); });
+    loadDashboard();
+</script>
+</body>
+</html>

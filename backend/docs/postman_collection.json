@@ -1,0 +1,153 @@
+{
+  "info": {
+    "name": "Manara-Nexus API",
+    "description": "Complete Postman Collection for Manara-Nexus NGO Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000/api" },
+    { "key": "token",    "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Donor",
+          "request": {
+            "method": "POST", "url": "{{base_url}}/auth/register/donor",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Ravi Kumar\",\"email\":\"ravi@test.com\",\"password\":\"Donor@123\",\"phone\":\"9876543210\",\"city\":\"Bengaluru\",\"address\":\"12 MG Road\"}" }
+          }
+        },
+        {
+          "name": "Register Volunteer",
+          "request": {
+            "method": "POST", "url": "{{base_url}}/auth/register/volunteer",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Neha Reddy\",\"email\":\"neha@test.com\",\"password\":\"Vol@12345\",\"phone\":\"9123456789\",\"city\":\"Hyderabad\",\"interests\":\"Education\",\"dob\":\"2000-05-15\"}" }
+          }
+        },
+        {
+          "name": "Login (Admin)",
+          "event": [{ "listen": "test", "script": { "exec": ["const r = pm.response.json(); if(r.token) pm.collectionVariables.set('token', r.token);"] } }],
+          "request": {
+            "method": "POST", "url": "{{base_url}}/auth/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"admin@manara-nexus.org\",\"password\":\"Admin@123\"}" }
+          }
+        },
+        {
+          "name": "Login (Donor)",
+          "event": [{ "listen": "test", "script": { "exec": ["const r = pm.response.json(); if(r.token) pm.collectionVariables.set('token', r.token);"] } }],
+          "request": {
+            "method": "POST", "url": "{{base_url}}/auth/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"ravi@example.com\",\"password\":\"Donor@123\"}" }
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": { "method": "GET", "url": "{{base_url}}/auth/me", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }] }
+        },
+        {
+          "name": "Logout",
+          "request": { "method": "POST", "url": "{{base_url}}/auth/logout", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }] }
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "item": [
+        { "name": "Get Profile",    "request": { "method": "GET",  "url": "{{base_url}}/profile", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }] } },
+        { "name": "Update Profile", "request": { "method": "PUT",  "url": "{{base_url}}/profile", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" },{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"Ravi K\",\"phone\":\"9876543211\",\"city\":\"Mumbai\"}" } } },
+        { "name": "Change Password","request": { "method": "PUT",  "url": "{{base_url}}/profile/password", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" },{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"current_password\":\"Donor@123\",\"new_password\":\"NewPass@456\"}" } } }
+      ]
+    },
+    {
+      "name": "Campaigns",
+      "item": [
+        { "name": "Get All Campaigns", "request": { "method": "GET", "url": "{{base_url}}/campaigns" } },
+        { "name": "Get Active",        "request": { "method": "GET", "url": "{{base_url}}/campaigns?status=active" } },
+        { "name": "Get One",           "request": { "method": "GET", "url": "{{base_url}}/campaigns/1" } },
+        { "name": "Get QR Code",       "request": { "method": "GET", "url": "{{base_url}}/campaigns/1/qr", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }] } },
+        { "name": "Create Campaign",   "request": { "method": "POST","url": "{{base_url}}/campaigns", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "body": { "mode": "formdata", "formdata": [{"key":"title","value":"New Campaign"},{"key":"description","value":"Campaign description"},{"key":"target_amount","value":"50000"},{"key":"start_date","value":"2026-08-01"},{"key":"end_date","value":"2026-12-31"},{"key":"city","value":"Bengaluru"}] } } },
+        { "name": "Update Status",     "request": { "method": "PATCH","url": "{{base_url}}/campaigns/1/status", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" },{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"status\":\"inactive\"}" } } },
+        { "name": "Delete Campaign",   "request": { "method": "DELETE","url": "{{base_url}}/campaigns/1", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }] } }
+      ]
+    },
+    {
+      "name": "Donations",
+      "item": [
+        { "name": "Create Donation (Cash)", "request": { "method": "POST","url": "{{base_url}}/donations", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"campaign_id\":1,\"amount\":2000,\"payment_mode\":\"cash\",\"notes\":\"Monthly donation\"}" } } },
+        { "name": "Create Razorpay Order",  "request": { "method": "POST","url": "{{base_url}}/donations/razorpay/order", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"amount\":500,\"campaign_id\":1}" } } },
+        { "name": "Verify Razorpay",        "request": { "method": "POST","url": "{{base_url}}/donations/razorpay/verify", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"razorpay_order_id\":\"\",\"razorpay_payment_id\":\"\",\"razorpay_signature\":\"\",\"donation_id\":1,\"campaign_id\":1,\"amount\":500}" } } },
+        { "name": "My Donations",           "request": { "method": "GET", "url": "{{base_url}}/donations/my", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "All Donations (Admin)",  "request": { "method": "GET", "url": "{{base_url}}/donations", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Verify Donation",        "request": { "method": "PATCH","url": "{{base_url}}/donations/1/verify", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Reject Donation",        "request": { "method": "PATCH","url": "{{base_url}}/donations/1/reject", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Download Receipt (PDF)", "request": { "method": "GET", "url": "{{base_url}}/donations/1/receipt", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } }
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        { "name": "Donate Item",    "request": { "method": "POST","url": "{{base_url}}/items", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"item_name\":\"Winter Blankets\",\"category\":\"Clothing\",\"quantity\":5,\"item_condition\":\"new\",\"pickup_required\":true}" } } },
+        { "name": "My Items",       "request": { "method": "GET", "url": "{{base_url}}/items/my", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "All Items (Admin)","request":{ "method": "GET", "url": "{{base_url}}/items",    "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Update Status",  "request": { "method": "PATCH","url": "{{base_url}}/items/1/status", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"status\":\"received\"}" } } }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        { "name": "Get All Tasks",   "request": { "method": "GET", "url": "{{base_url}}/tasks", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Create Task",     "request": { "method": "POST","url": "{{base_url}}/tasks", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"title\":\"Food Distribution Drive\",\"description\":\"Distribute food packets\",\"priority\":\"high\",\"assigned_to\":3,\"due_date\":\"2026-08-15\"}" } } },
+        { "name": "Update Status",   "request": { "method": "PATCH","url": "{{base_url}}/tasks/1/status", "header": [{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"status\":\"completed\"}" } } },
+        { "name": "Delete Task",     "request": { "method": "DELETE","url": "{{base_url}}/tasks/1", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        { "name": "Dashboard Stats",  "request": { "method": "GET","url": "{{base_url}}/admin/dashboard",    "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "All Donors",       "request": { "method": "GET","url": "{{base_url}}/admin/donors",       "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Donors by City",   "request": { "method": "GET","url": "{{base_url}}/admin/donors?city=Bengaluru","header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "All Volunteers",   "request": { "method": "GET","url": "{{base_url}}/admin/volunteers",   "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Transactions",     "request": { "method": "GET","url": "{{base_url}}/admin/transactions", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Messages",         "request": { "method": "GET","url": "{{base_url}}/admin/messages",     "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Delete User",      "request": { "method": "DELETE","url": "{{base_url}}/admin/users/2",   "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        { "name": "Donation Report (PDF)", "request": { "method": "GET","url": "{{base_url}}/reports/donations?format=pdf",  "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Donation Report (CSV)", "request": { "method": "GET","url": "{{base_url}}/reports/donations?format=csv",  "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Campaign Report (PDF)", "request": { "method": "GET","url": "{{base_url}}/reports/campaigns?format=pdf",  "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Volunteer Report (PDF)","request": { "method": "GET","url": "{{base_url}}/reports/volunteers?format=pdf", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Monthly Report",        "request": { "method": "GET","url": "{{base_url}}/reports/monthly?month=2026-07&format=pdf","header": [{"key":"Authorization","value":"Bearer {{token}}"}] } }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        { "name": "Get Notifications", "request": { "method": "GET",  "url": "{{base_url}}/notifications",          "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Mark One Read",     "request": { "method": "PATCH","url": "{{base_url}}/notifications/1/read",    "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } },
+        { "name": "Mark All Read",     "request": { "method": "PATCH","url": "{{base_url}}/notifications/read-all", "header": [{"key":"Authorization","value":"Bearer {{token}}"}] } }
+      ]
+    },
+    {
+      "name": "Contact",
+      "item": [
+        { "name": "Send Message", "request": { "method": "POST","url": "{{base_url}}/contact", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\"name\":\"John Doe\",\"email\":\"john@test.com\",\"subject\":\"Volunteer Query\",\"message\":\"I would like to volunteer for food distribution.\"}" } } }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        { "name": "Health Check", "request": { "method": "GET", "url": "{{base_url}}/health" } }
+      ]
+    }
+  ]
+}

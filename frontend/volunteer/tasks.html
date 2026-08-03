@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manara-Nexus - Add Task</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/style.css">
+</head>
+<body class="text-center">
+    <div id="alertBox" class="alert" style="display:none;"></div>
+    <form class="form-signin" id="taskForm">
+        <h3 class="h3 mb-3 font-weight-normal">Add New Task</h3>
+        <p>Task Title: <input type="text" id="title" required></p>
+        <p>Description: <textarea id="description" rows="3"></textarea></p>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        <a href="../dashboard/volunteerDashboard.html" class="btn btn-secondary btn-lg">Cancel</a>
+    </form>
+<script src="../../bootstrap/js/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/js/api.js"></script>
+<script>
+    if (!requireAuth('volunteer')) throw new Error('Unauthorized');
+
+    document.getElementById('taskForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const title       = document.getElementById('title').value.trim();
+        const description = document.getElementById('description').value.trim();
+        if (!title) return showAlert('error', 'Task title is required.');
+        try {
+            // Volunteer creates task assigned to themselves
+            const user = getUser();
+            await api('POST', '/tasks', { title, description, assigned_to: user.id });
+            showAlert('success', 'Task added successfully!');
+            setTimeout(() => window.location.href = '../dashboard/volunteerDashboard.html', 1500);
+        } catch (err) { showAlert('error', err.message); }
+    });
+</script>
+</body>
+</html>
