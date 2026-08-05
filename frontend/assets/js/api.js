@@ -1,6 +1,9 @@
 'use strict';
 
-const API_BASE = 'http://localhost:5000/api';
+// Production pe Render URL use hogi, development pe localhost
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000/api'
+  : 'https://manara-nexus-api.onrender.com/api';  // Render deploy ke baad yahan apna URL daalo
 
 // ── Token helpers ──────────────────────────────
 function getToken()        { return localStorage.getItem('mn_token'); }
